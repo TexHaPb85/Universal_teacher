@@ -7,7 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 @RestController
-@RequestMapping("message")
+@RequestMapping("messages")
 public class MessageController {
 
     private int currId = 5;
@@ -18,6 +18,11 @@ public class MessageController {
         put(4, "message four");
     }};
 
+    @GetMapping
+    public String list() {
+        return messages.toString();
+    }
+
     @GetMapping("{id}")
     public String getOne(@PathVariable Integer id) {
         if (!messages.containsKey(id)) {
@@ -27,7 +32,7 @@ public class MessageController {
     }
 
     @PostMapping
-    public String createMessage(@RequestBody String message) {
+    public String addMessage(@RequestBody String message) {
         messages.put(currId++,message);
         return message;
     }
@@ -43,9 +48,6 @@ public class MessageController {
         messages.remove(id);
     }
 
-    @GetMapping
-    public String list() {
-        return messages.toString();
-    }
+
 
 }
