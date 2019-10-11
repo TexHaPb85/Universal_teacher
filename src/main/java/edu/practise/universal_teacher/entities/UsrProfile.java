@@ -1,6 +1,10 @@
 package edu.practise.universal_teacher.entities;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonView;
+
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
@@ -16,24 +20,37 @@ public class UsrProfile {
     private Integer age;
     private Long experience;
     private Integer level;
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
+    private LocalDateTime lastVisitDate;
 
     @OneToOne(mappedBy = "profile")
     private User user;
 
-    //@OneToMany(mappedBy = "profiles")
+    //@OneToMany(mappedBy = "profiles")S
     //private Set<Achievement> achievements;
 
     public UsrProfile() {
     }
 
-    public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level, User user, Set<Achievement> achievements) {
+    public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level,
+                      User user, /*Set<Achievement> achievements,*/ LocalDateTime lastVisitDate) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
         this.experience = experience;
         this.level = level;
         this.user = user;
+        this.lastVisitDate=lastVisitDate;
         //this.achievements = achievements;
+    }
+
+    public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level) {
+        this.login = login;
+        this.photoURL = photoURL;
+        this.age = age;
+        this.experience = experience;
+        this.level = level;
+        this.lastVisitDate=LocalDateTime.now();
     }
 
     public Long getId() {
@@ -92,7 +109,15 @@ public class UsrProfile {
         this.user = user;
     }
 
-   /* public Set<Achievement> getAchievements() {
+    public LocalDateTime getLastVisitDate() {
+        return lastVisitDate;
+    }
+
+    public void setLastVisitDate(LocalDateTime lastVisitDate) {
+        this.lastVisitDate = lastVisitDate;
+    }
+
+    /* public Set<Achievement> getAchievements() {
         return achievements;
     }
 

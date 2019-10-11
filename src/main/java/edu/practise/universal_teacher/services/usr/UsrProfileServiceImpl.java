@@ -3,6 +3,7 @@ package edu.practise.universal_teacher.services.usr;
 import edu.practise.universal_teacher.entities.UsrProfile;
 import edu.practise.universal_teacher.exceptions.ProfileNotFoundException;
 import edu.practise.universal_teacher.reposetories.UsrProfileRepository;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -42,12 +43,11 @@ public class UsrProfileServiceImpl implements UsrProfileService {
 
     @Override
     public UsrProfile editProfileById(Long profileId, UsrProfile newProfileValues) {//??????????
-        UsrProfile ediedProfile = repository
+        UsrProfile editedProfile = repository
                 .findById(profileId)
                 .orElseThrow(() -> new ProfileNotFoundException(profileId));
+        BeanUtils.copyProperties(newProfileValues,editedProfile,"id");
 
-        ediedProfile = newProfileValues;
-        ediedProfile.setId(profileId);
-        return repository.save(ediedProfile);
+        return repository.save(editedProfile);
     }
 }

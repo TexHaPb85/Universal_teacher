@@ -1,30 +1,38 @@
-package edu.practise.universal_teacher.controller;
+package edu.practise.universal_teacher.controller.user;
 
+import edu.practise.universal_teacher.entities.User;
 import edu.practise.universal_teacher.entities.UsrProfile;
 import edu.practise.universal_teacher.services.usr.UserServiceImpl;
 import edu.practise.universal_teacher.services.usr.UsrProfileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-public class UserController {
+public class ProfilesController {
     private final UsrProfileServiceImpl profileService;
-    private final UserServiceImpl userService;
+
 
     @Autowired
-    public UserController(UsrProfileServiceImpl profileService, UserServiceImpl userService) {
+    public ProfilesController(UsrProfileServiceImpl profileService) {
         this.profileService = profileService;
-        this.userService = userService;
     }
 
     @GetMapping("/admin/profiles")
-    public ResponseEntity getAllProfiles(){
+    public ResponseEntity<List<UsrProfile>> getAllProfiles(){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(profileService.getAllProfiles());
+    }
+
+    @GetMapping("/admin/profiles/{id}")
+    public ResponseEntity<UsrProfile> getProfileById(@PathVariable("id")Long id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(profileService.getProfileById(id));
     }
 
     @PostMapping("/admin/profiles/add")
@@ -32,5 +40,13 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(profileService.saveProfile(usrProfile));
+    }
+
+    @DeleteMapping("/admin/profiles/{id}")
+    public ResponseEntity<String> deleteProfile(@PathVariable("id")Long id){
+        profileService.deleteProfileById(id);
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body("profile was removed, id:"+ id);
     }
 }
