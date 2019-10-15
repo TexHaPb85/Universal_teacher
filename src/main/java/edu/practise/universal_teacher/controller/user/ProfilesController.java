@@ -1,8 +1,7 @@
 package edu.practise.universal_teacher.controller.user;
 
-import edu.practise.universal_teacher.entities.User;
 import edu.practise.universal_teacher.entities.UsrProfile;
-import edu.practise.universal_teacher.services.usr.UserServiceImpl;
+import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 import edu.practise.universal_teacher.services.usr.UsrProfileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,7 +13,6 @@ import java.util.List;
 @RestController
 public class ProfilesController {
     private final UsrProfileServiceImpl profileService;
-
 
     @Autowired
     public ProfilesController(UsrProfileServiceImpl profileService) {
@@ -35,11 +33,11 @@ public class ProfilesController {
                 .body(profileService.getProfileById(id));
     }
 
-    @PostMapping("/admin/profiles/add")
-    public ResponseEntity<UsrProfile> addProfile(@RequestBody UsrProfile usrProfile){
+    @PostMapping("/admin/profiles")
+    public ResponseEntity<UsrProfile> addProfile(@RequestBody UsrProfileDTO profileDTO){
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(profileService.saveProfile(usrProfile));
+                .body(profileService.saveProfile(profileDTO));
     }
 
     @DeleteMapping("/admin/profiles/{id}")

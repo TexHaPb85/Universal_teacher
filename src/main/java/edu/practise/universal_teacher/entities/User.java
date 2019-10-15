@@ -9,7 +9,7 @@ import javax.validation.constraints.Email;
 @Table(name = "app_users")
 public class User {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@GeneratedValue(strategy = GenerationType.AUTO) ід буде приходити з гугла, тому немає сенсу їх автогенерувати
     @Column(name = "id")
     private Long id;
 
@@ -22,7 +22,7 @@ public class User {
      */
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinTable(name = "profile_id",
+    @JoinTable(name = "profile_user",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = { @JoinColumn(name = "usr_profile_id", referencedColumnName = "id")})
     private UsrProfile profile;

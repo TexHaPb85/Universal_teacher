@@ -2,10 +2,10 @@ package edu.practise.universal_teacher.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonView;
+import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.Set;
 
 @Entity
 @Table(name = "profiles")
@@ -15,11 +15,17 @@ public class UsrProfile {
     @Column(name = "id")
     private Long id;
 
+    @JsonView(Views.WithoutExp.class)
     private String login;
+    @JsonView(Views.WithoutExp.class)
     private String photoURL;
+    @JsonView(Views.WithoutExp.class)
     private Integer age;
+    @JsonView(Views.FullProfile.class)
     private Long experience;
+    @JsonView(Views.FullProfile.class)
     private Integer level;
+
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime lastVisitDate;
 
@@ -51,6 +57,15 @@ public class UsrProfile {
         this.experience = experience;
         this.level = level;
         this.lastVisitDate=LocalDateTime.now();
+    }
+
+    public UsrProfile(UsrProfileDTO profileDTO) {
+        this.login = profileDTO.getLogin();
+        this.photoURL = profileDTO.getPhotoURL();
+        this.age = profileDTO.getAge();
+        this.experience = profileDTO.getExperience();
+        this.level = profileDTO.getLevel();
+        this.lastVisitDate = LocalDateTime.now();
     }
 
     public Long getId() {

@@ -22,14 +22,14 @@ public class UserController {
         this.userService = userService;
     }
 
-    @GetMapping
-    public ResponseEntity<List<User>> getAllProfiles(){
+    @GetMapping("/admin/users")
+    public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(userService.getAllUsers());
     }
 
-    @PostMapping("/admin/users/add")
+    @PostMapping("/admin/users")
     public ResponseEntity<User> addProfile(@RequestBody User usr) {
         return ResponseEntity
                 .status(HttpStatus.OK)

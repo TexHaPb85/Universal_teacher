@@ -1,7 +1,10 @@
 package edu.practise.universal_teacher.services.usr;
 
+import edu.practise.universal_teacher.entities.User;
 import edu.practise.universal_teacher.entities.UsrProfile;
+import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 import edu.practise.universal_teacher.exceptions.ProfileNotFoundException;
+import edu.practise.universal_teacher.reposetories.UserRepository;
 import edu.practise.universal_teacher.reposetories.UsrProfileRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,10 +16,12 @@ import java.util.List;
 public class UsrProfileServiceImpl implements UsrProfileService {
 
     private final UsrProfileRepository repository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UsrProfileServiceImpl(UsrProfileRepository repository) {
+    public UsrProfileServiceImpl(UsrProfileRepository repository, UserRepository userRepository) {
         this.repository = repository;
+        this.userRepository = userRepository;
     }
 
     @Override
@@ -32,8 +37,14 @@ public class UsrProfileServiceImpl implements UsrProfileService {
     }
 
     @Override
-    public UsrProfile saveProfile(UsrProfile usrProfile) {
-        return repository.save(usrProfile);
+    public UsrProfile saveProfile(UsrProfileDTO profileDTO) {
+        UsrProfile profile = new UsrProfile(profileDTO);
+        User user = userRepository
+                .findById(profileDTO.getUserId())
+                .orElse(null);
+        profile.setUser(user);
+
+        return repository.save(profile);
     }
 
     @Override

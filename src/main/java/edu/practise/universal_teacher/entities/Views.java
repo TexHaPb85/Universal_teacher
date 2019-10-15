@@ -1,5 +1,7 @@
 package edu.practise.universal_teacher.entities;
 
-public class Views {
+public final class Views {
+    public interface WithoutExp {}
 
+    public interface FullProfile extends WithoutExp{}
 }
