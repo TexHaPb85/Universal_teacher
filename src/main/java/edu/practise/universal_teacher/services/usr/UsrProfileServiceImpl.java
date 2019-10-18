@@ -30,7 +30,7 @@ public class UsrProfileServiceImpl implements UsrProfileService {
     }
 
     @Override
-    public UsrProfile getProfileById(Long id) {
+    public UsrProfile getProfileById(String id) {
         return repository
                 .findById(id)
                 .orElseThrow(() -> new ProfileNotFoundException(id));
@@ -48,12 +48,12 @@ public class UsrProfileServiceImpl implements UsrProfileService {
     }
 
     @Override
-    public void deleteProfileById(Long profileId) {
+    public void deleteProfileById(String profileId) {
         repository.deleteById(profileId);
     }
 
     @Override
-    public UsrProfile editProfileById(Long profileId, UsrProfile newProfileValues) {//??????????
+    public UsrProfile editProfileById(String profileId, UsrProfile newProfileValues) {//??????????
         UsrProfile editedProfile = repository
                 .findById(profileId)
                 .orElseThrow(() -> new ProfileNotFoundException(profileId));

@@ -25,7 +25,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User getUserById(Long id) {
+    public User getUserById(String id) {
         return repository
                 .findById(id)
                 .orElseThrow(()->new UserNotFoundException(id));
@@ -37,12 +37,12 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void deleteUserById(Long userId) {
+    public void deleteUserById(String userId) {
         repository.deleteById(userId);
     }
 
     @Override
-    public User editUserById(Long userId, User user) {
+    public User editUserById(String userId, User user) {
         User userFromDB = getUserById(userId);
         BeanUtils.copyProperties(user,userFromDB,"id");
         return repository.save(userFromDB);

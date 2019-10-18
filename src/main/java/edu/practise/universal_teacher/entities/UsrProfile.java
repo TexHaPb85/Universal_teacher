@@ -11,20 +11,15 @@ import java.time.LocalDateTime;
 @Table(name = "profiles")
 public class UsrProfile {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id")
-    private Long id;
+    private String id;
 
-    @JsonView(Views.WithoutExp.class)
     private String login;
-    @JsonView(Views.WithoutExp.class)
     private String photoURL;
-    @JsonView(Views.WithoutExp.class)
     private Integer age;
-    @JsonView(Views.FullProfile.class)
     private Long experience;
-    @JsonView(Views.FullProfile.class)
     private Integer level;
+    private String locale;
+
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime lastVisitDate;
@@ -35,11 +30,24 @@ public class UsrProfile {
     //@OneToMany(mappedBy = "profiles")S
     //private Set<Achievement> achievements;
 
+
+    public UsrProfile(String id, String login, String photoURL, Integer age, Long experience, Integer level, String locale, LocalDateTime lastVisitDate, User user) {
+        this.id = id;
+        this.login = login;
+        this.photoURL = photoURL;
+        this.age = age;
+        this.experience = experience;
+        this.level = level;
+        this.locale = locale;
+        this.lastVisitDate = lastVisitDate;
+        this.user = user;
+    }
+
     public UsrProfile() {
     }
 
     public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level,
-                      User user, /*Set<Achievement> achievements,*/ LocalDateTime lastVisitDate) {
+                      User user, /*Set<Achievement> achievements,*/ LocalDateTime lastVisitDate, String locale) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
@@ -48,6 +56,7 @@ public class UsrProfile {
         this.user = user;
         this.lastVisitDate=lastVisitDate;
         //this.achievements = achievements;
+        this.locale = locale;
     }
 
     public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level) {
@@ -68,11 +77,11 @@ public class UsrProfile {
         this.lastVisitDate = LocalDateTime.now();
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -132,6 +141,14 @@ public class UsrProfile {
         this.lastVisitDate = lastVisitDate;
     }
 
+    public String getLocale() {
+        return locale;
+    }
+
+    public void setLocale(String locale) {
+        this.locale = locale;
+    }
+
     /* public Set<Achievement> getAchievements() {
         return achievements;
     }
@@ -139,4 +156,19 @@ public class UsrProfile {
     public void setAchievements(Set<Achievement> achievements) {
         this.achievements = achievements;
     }*/
+
+    @Override
+    public String toString() {
+        return "UsrProfile{" +
+                "id='" + id + '\'' +
+                ", login='" + login + '\'' +
+                ", photoURL='" + photoURL + '\'' +
+                ", age=" + age +
+                ", experience=" + experience +
+                ", level=" + level +
+                ", locale='" + locale + '\'' +
+                ", lastVisitDate=" + lastVisitDate +
+                ", user=" + user +
+                '}';
+    }
 }
