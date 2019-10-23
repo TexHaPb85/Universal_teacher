@@ -1,0 +1,40 @@
+ h1{
+     text-align: center;
+     padding-top: 15px;
+     font-size: 25px;
+ }
+.container-content {
+    background-color: #c3deda;
+   
+}
+.showcase-container{
+
+    display: flex;
+    justify-content: space-around;
+
+}
+.content-img{
+    width: 250px;
+    height: 330px;
+    background: url("../imgs/content-carousel/kirito.jpg")no-repeat  center/cover;
+    border: 2px solid;
+    margin: 30px 0px 50px 0px;
+}
+
+.hidden{
+    text-align: center;
+    visibility: hidden;
+}
+ .content-img:hover .hidden{
+     width: 250px;
+     height: 330px;
+     display: block;
+     visibility: visible;
+     background-color: rgba(0,0,0,0.2);
+     border: 2px solid var(--maincolor);
+
+
+
+
+
+ }
