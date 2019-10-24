@@ -1,6 +1,7 @@
 package edu.practise.universal_teacher.entities;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonView;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 
@@ -11,6 +12,7 @@ import java.time.LocalDateTime;
 @Table(name = "profiles")
 public class UsrProfile {
     @Id
+    @Column(name = "prof_id")
     private String id;
 
     private String login;
@@ -25,6 +27,7 @@ public class UsrProfile {
     private LocalDateTime lastVisitDate;
 
     @OneToOne(mappedBy = "profile")
+    @JsonIgnore
     private User user;
 
     //@OneToMany(mappedBy = "profiles")S

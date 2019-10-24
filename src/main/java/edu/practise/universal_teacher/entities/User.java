@@ -1,7 +1,5 @@
 package edu.practise.universal_teacher.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 
@@ -10,19 +8,15 @@ import javax.validation.constraints.Email;
 public class User {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) ід буде приходити з гугла, тому немає сенсу їх автогенерувати
-    //@Column(name = "id")
     private String id;
 
     @Email
     private String email;
     //@JsonIgnore
     private String password;
-    /**
-     * https://www.baeldung.com/jpa-one-to-one
-     */
 
     @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "profile_id", referencedColumnName = "id")
+    @JoinColumn(name = "profile_id", referencedColumnName = "prof_id")
     private UsrProfile profile;
 
     //@OneToMany(mappedBy = "app_users")

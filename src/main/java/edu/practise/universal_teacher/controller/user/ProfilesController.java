@@ -47,6 +47,4 @@ public class ProfilesController {
                 .status(HttpStatus.OK)
                 .body("profile was removed, id:"+ id);
     }
-
-
 }
