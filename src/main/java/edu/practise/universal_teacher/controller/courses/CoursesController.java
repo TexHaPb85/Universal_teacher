@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.controller;
+package edu.practise.universal_teacher.controller.courses;
 
 import edu.practise.universal_teacher.entities.Course;
 import edu.practise.universal_teacher.services.course.CourseServiceImpl;
