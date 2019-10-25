@@ -1,0 +1,48 @@
+.login_modal{
+
+    width: 80vw;
+    background: white;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.26);
+    position: fixed;
+    top:13vh;
+    left: 5%;
+    z-index: 2;
+}
+
+@media (min-width: 768px) {
+    .login_modal{
+        width: 35rem;
+        left: calc((100% - 35rem)/2);
+    }
+
+}
+.login_header{
+    padding-bottom: 1rem;
+    background:var(--maincolor) ;
+
+}
+.login_header h1{
+    color: #c5c5c5;
+    margin: auto;
+    font-size: 1.25rem;
+
+}
+.login_action{
+    display: flex;
+    justify-content: flex-end;
+
+
+}
+.modal_exit {
+
+            display: flex;
+            justify-content: flex-end;
+            margin-top: -38px;
+
+
+}
+.modal_exit img:hover{
+    cursor: pointer;
+
+
+}
