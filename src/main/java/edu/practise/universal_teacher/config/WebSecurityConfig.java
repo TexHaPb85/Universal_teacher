@@ -24,10 +24,10 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
                 .csrf().disable();
     }
 
-    @Bean
-    public PrincipalExtractor principalExtractor(UserRepository userRepository){
-        return map -> {
-            String id =
-        };
-    }
+//    @Bean
+//    public PrincipalExtractor principalExtractor(UserRepository userRepository){
+//        return map -> {
+//            String id =
+//        };
+//    }
 }

@@ -9,6 +9,7 @@
     background-color: var(--maincolor);
 
 
+
 }
 .item1{
     flex-grow:6;
@@ -31,6 +32,7 @@
 
 ul li{
     display:inline-block;
+    color: #c5c5c5;
 
 
 }
@@ -53,7 +55,7 @@ li a{
 
 .btnh1{
 
-    background-color:  white;
+    background-color:  #c5c5c5;
     width: 95px;
     height: 0;
 
@@ -64,10 +66,11 @@ li a{
 }
 
 .btnh2{
+
    margin-left: 20px;
     position: relative;
     overflow: visible;
-    z-index: 4;
+    z-index: 1;
     display: inline-block;
 }
 .btnh2:before{
@@ -80,7 +83,7 @@ li a{
     margin-left: -20px;
 
 
-    background-color:  white;
+    background-color: #c5c5c5;
     border-bottom: 25px solid transparent;
     border-left:  15px solid transparent;
     border-right: 17px solid var(--maincolor);
@@ -94,6 +97,7 @@ li a{
 
 /*}*/
 
-.login{
+.login a{
     margin-left: 2em;
+    color: #c5c5c5;
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import Login from "./components/Login";
 import  Header from "./components/Header";
 import  Home from "./components/Home";
 import Footer from "./components/Footer";
@@ -16,8 +17,10 @@ function App() {
   return (
     <Router>
       <div>
-        <Header/>
+        <Header />
+        {/*<Route  path="/heh" exact component={Login} />*/}
         <Home/>
+
         <Content/>
         <Reviews/>
         <Footer/>
