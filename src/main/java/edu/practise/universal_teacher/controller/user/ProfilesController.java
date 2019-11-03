@@ -27,7 +27,7 @@ public class ProfilesController {
     }
 
     @GetMapping("/admin/profiles/{id}")
-    public ResponseEntity<UsrProfile> getProfileById(@PathVariable("id")Long id){
+    public ResponseEntity<UsrProfile> getProfileById(@PathVariable("id")String id){
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(profileService.getProfileById(id));
@@ -41,7 +41,7 @@ public class ProfilesController {
     }
 
     @DeleteMapping("/admin/profiles/{id}")
-    public ResponseEntity<String> deleteProfile(@PathVariable("id")Long id){
+    public ResponseEntity<String> deleteProfile(@PathVariable("id")String id){
         profileService.deleteProfileById(id);
         return ResponseEntity
                 .status(HttpStatus.OK)

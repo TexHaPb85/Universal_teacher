@@ -7,12 +7,12 @@ public class UsrProfileDTO {
     private Long experience;
     private Integer level;
 
-    private Long userId;
+    private String userId;
 
     public UsrProfileDTO() {
     }
 
-    public UsrProfileDTO(String login, String photoURL, Integer age, Long experience, Integer level, Long userId) {
+    public UsrProfileDTO(String login, String photoURL, Integer age, Long experience, Integer level, String userId) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
@@ -61,11 +61,11 @@ public class UsrProfileDTO {
         this.level = level;
     }
 
-    public Long getUserId() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserId(Long userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 }

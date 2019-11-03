@@ -8,13 +8,13 @@ import java.util.List;
 public interface UsrProfileService {
     List<UsrProfile> getAllProfiles();
 
-    UsrProfile getProfileById(Long id);
+    UsrProfile getProfileById(String id);
 
     UsrProfile saveProfile(UsrProfileDTO usrProfile);
 
-    void deleteProfileById(Long profileId);
+    void deleteProfileById(String profileId);
 
-    UsrProfile editProfileById(Long profileId, UsrProfile profile);
+    UsrProfile editProfileById(String profileId, UsrProfile profile);
 
 
 }
