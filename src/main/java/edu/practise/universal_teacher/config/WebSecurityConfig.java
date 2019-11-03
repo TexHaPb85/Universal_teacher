@@ -33,7 +33,6 @@ public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
 
 
     }
-
     /**
      * during google authorization we are looking for user with the same Id im DB,
      * if we haven`t found it, we get info from google account add it to db

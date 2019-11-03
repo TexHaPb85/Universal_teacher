@@ -1,0 +1,106 @@
+.conatiner-home{
+    position: relative;
+
+}
+
+.img{
+    background: url("../imgs/slider/home2.jpg")no-repeat center center/cover;
+    height: 80vh;
+    width: 100%;
+    position: relative;
+    top: -0px;
+    z-index: -2;
+}
+
+.overlay{
+    position: relative;
+    height: 100% ;
+    width: 100%;
+    top: -0px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: -1;
+}
+
+.home-text{
+    position: absolute;
+    display: inline-block;
+    top: 25%;
+    left: 10%;
+}
+
+.home-text h2{
+    font-size: 36px;
+    color: #c5c5c5;
+    line-height: 40px;
+}
+
+.home-text p{
+    margin-top: 20px;
+    font-size: 20px;
+    color: #c5c5c5;
+}
+
+#triangle-left {
+    position: absolute;
+    right: 0;
+    top:35%;
+    width: 0;
+    height: 0;
+    border-top: 90px solid transparent;
+    border-right: 85px solid #888888;
+    border-bottom: 90px solid transparent;
+    opacity: 0.8;
+}
+
+
+#pentagon {
+
+    transform: rotate(90deg);
+    top:10.5%;
+    left: -150px;
+    position: relative;
+    width: 500px;
+    border-width:400px 140px 0px 160px;
+    border-style: solid;
+    border-color: #c5c5c5 transparent;
+    opacity: 0.35;
+}
+#pentagon:before {
+
+    content: "";
+    position: absolute;
+    height: 0;
+    width: 0;
+    top: -600px;
+    left: -160px;
+    border-width: 0px 220px 200px 280px;
+    border-style: solid;
+    border-color: transparent transparent #c5c5c5;
+}
+
+.home-button1 a{
+    display: inline-block;
+    color: #c5c5c5 ;
+    z-index: 10000000;
+}
+
+.home-button1 a :hover{
+    color: black ;
+}
+
+.home-button1 {
+    background-color: rgba(66,0,94,0.5);
+    display: inline-block;
+    border: none;
+    padding: 3px 15px 3px 15px;
+    color: #c5c5c5;
+    text-align: center;
+    line-height: 15px;
+    margin-top: 20px;
+    margin-left: 70px;
+    cursor: pointer;
+}
+
+button .home-button1:hover{
+    background-color: black;
+}
