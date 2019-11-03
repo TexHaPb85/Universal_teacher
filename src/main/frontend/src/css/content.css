@@ -1,40 +1,97 @@
- h1{
-     text-align: center;
-     padding-top: 15px;
-     font-size: 25px;
- }
-.container-content {
-    background-color: #c3deda;
-   
-}
-.showcase-container{
+     h1{
+         text-align: center;
+         padding-top: 15px;
+         font-size: 25px;
+     }
+    .container-content {
+        background-color: #c3deda;
 
-    display: flex;
-    justify-content: space-around;
+    }
 
-}
-.content-img{
-    width: 250px;
-    height: 330px;
-    background: url("../imgs/content-carousel/kirito.jpg")no-repeat  center/cover;
-    border: 2px solid;
-    margin: 30px 0px 50px 0px;
-}
+    .carousel{
+          /*box-sizing: border-box;*/
+          /*border: 1px solid #c5c5c5 ;*/
+        width: 80vw;
+        margin: auto;
 
-.hidden{
-    text-align: center;
-    visibility: hidden;
-}
- .content-img:hover .hidden{
-     width: 250px;
-     height: 330px;
-     display: block;
-     visibility: visible;
-     background-color: rgba(0,0,0,0.2);
-     border: 2px solid var(--maincolor);
+      }
 
+     .flickity-enabled {
+         position: relative;
+     }
+
+     .flickity-viewport {
+         overflow: hidden;
+         position: relative;
+         height: 100%;
+         width: 80vw;
+     }
+     .flickity-slider {
+         position: absolute;
+         width: 100%;
+         height: 100%;
+     }
 
 
 
+     .flickity-prev-next-button .arrow {
+         fill: #c5c5c5;
+     }
+     .flickity-prev-next-button.no-svg {
+         color: #c5c5c5;
+     }
 
- }
+     .flickity-prev-next-button:hover {
+         background: transparent;
+         opacity: 1;
+     }
+
+     .flickity-prev-next-button {
+         position: absolute;
+         width: 40px;
+         height: 40px;
+         background: transparent;
+         opacity: 0.6;
+     }
+     .flickity-prev-next-button.previous {
+         margin-top: -10rem    ;
+         display: flex;
+         left:0;
+     }
+     .flickity-prev-next-button.next {
+
+         margin-top: -10rem  ;
+         right: 0;
+     }
+
+
+
+         .carousel-cell {
+             width: 34%;
+             height: 250px;
+
+             /* flex-box, center image in cell */
+             display: flex ;
+             -webkit-box-pack: center;
+             -webkit-justify-content: center;
+             justify-content: center;
+             -webkit-align-items: center;
+             align-items: center;
+         }
+
+         .carousel-cell img {
+             display: flex;
+             width: 250px;
+             height: 250px;
+             max-width: 100%;
+             max-height: 100%;
+             /* dim unselected */
+             /*opacity: 0.7;*/
+             /*-webkit-transform: scale(0.85);*/
+             /*transform: scale(0.85);*/
+             /*-webkit-filter: blur(5px);*/
+             /*filter: blur(5px);*/
+             /*-webkit-transition: opacity 0.3s, -webkit-transform 0.3s, transform 0.3s, -webkit-filter 0.3s, filter 0.3s;*/
+             /*transition: opacity 0.3s, transform 0.3s, filter 0.3s;*/
+         }
+
