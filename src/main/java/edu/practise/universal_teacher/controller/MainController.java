@@ -14,6 +14,8 @@ import java.util.HashMap;
 @RequestMapping("/")
 public class MainController {
 
+
+
     @GetMapping
     public HashMap<Object, Object> main(@AuthenticationPrincipal User user){
         HashMap<Object, Object> data = new HashMap<>();
