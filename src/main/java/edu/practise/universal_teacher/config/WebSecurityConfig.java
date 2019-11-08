@@ -10,40 +10,53 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
 
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Configuration
 @EnableWebSecurity
 @EnableOAuth2Sso
-public class WebSecurityConfig  extends WebSecurityConfigurerAdapter{
+public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
+        http.cors().and().antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login**", "/js/**", "/error**").permitAll()
+                .antMatchers("/", "/login**", "/js/**", "/error**","/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .csrf().disable();
+
+                .csrf().disable()
+               ;
                 /*.authorizeRequests()
                 .mvcMatchers("/").permitAll()
                 .anyRequest().authenticated()
                 .and()*/
 
 
+
     }
+
     /**
      * during google authorization we are looking for user with the same Id im DB,
      * if we haven`t found it, we get info from google account add it to db
+     *
      * @param userRepository
      * @return
      */
     @Bean
-    public PrincipalExtractor principalExtractor(UserRepository userRepository){
+    public PrincipalExtractor principalExtractor(UserRepository userRepository) {
         return map -> {
-            String id = (String)map.get("sub");
-            User loggedInUser = userRepository.findById(id).orElseGet(()->{
+            String id = (String) map.get("sub");
+            User loggedInUser = userRepository.findById(id).orElseGet(() -> {
                 User newUser = new User();
                 UsrProfile newProfile = new UsrProfile();
 

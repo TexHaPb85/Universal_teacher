@@ -1,7 +1,9 @@
 package edu.practise.universal_teacher.entities;
 
 import javax.persistence.*;
+import javax.security.auth.Subject;
 import javax.validation.constraints.Email;
+import java.security.Principal;
 
 @Entity
 @Table(name = "app_users")
@@ -37,6 +39,8 @@ public class User {
     }
 
     public User() {
+        this.id="cocu";
+        this.email="cocuxui@gmail.com";
     }
 
     public String getId() {
@@ -80,4 +84,5 @@ public class User {
                 ", profile=" + profile +
                 '}';
     }
+
 }

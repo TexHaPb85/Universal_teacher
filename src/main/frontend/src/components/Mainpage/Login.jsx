@@ -37,8 +37,8 @@ const Login = props =>
 
         </section>
         <section className="login_action">
-            <div>  {props.googleAuth && <img src={google} onClick={props.onGoogleAuth} alt="rofl"/>}</div>
-            {props.canCancel && <button className="btn">Зарегистрироваться</button>}
+            <div className="google">  {props.googleAuth &&   <img src={google} onClick={props.googleAuth} alt="rofl1"/>}</div>
+            {props.canCancel && <button className="btn" onClick={props.canCancel} >Зарегистрироваться</button>}
             {props.canConfirm && <button>Войти</button>}
         </section>
     </div>

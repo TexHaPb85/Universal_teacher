@@ -4,13 +4,14 @@ import edu.practise.universal_teacher.entities.Question;
 import edu.practise.universal_teacher.services.question.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.List;
 import java.util.Map;
-
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 @Controller
 public class QuestionController {
     private final QuestionServiceImpl questionService;

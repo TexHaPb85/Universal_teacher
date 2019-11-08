@@ -5,46 +5,52 @@ import Login from "./Login"
 import Backdrop from "./Backdrop";
 import {NavLink} from "react-router-dom";
 import login from "../../services/login"
-import axios from "axios";
+
+
+
 
 // import {Form,FormControl,FormLabel,Button} from "react-bootstrap"
 
 class Header extends Component {
-    state = {
-        creating: false,
-        persons: []
+    constructor(props) {
+        super(props);
+        this.state = {
+            creating: false,
+            persons: []
 
-    };
+
+        }
+    }
     createEventHandler = () => {
         this.setState({creating: true})
     }
     onExit1 = () => {
         this.setState({creating: false})
     }
-    onExit2 = () => {
-        if (onauxclick == Login) {
-            this.setState({creating: false})
-        }
-    }
+
 
     componentDidMount() {
-        login.googleAuth()
-            .then(res => {
-                    console.log(res);
-                    this.setState({persons: res.data})
-                    console.log(res)
-                }
-            )
-    }
 
-    onGoogleAuth = () => {
+    }
+    googleXD = () =>{
+
+
+    };
+    GoogleAuth =  () => {
+        // window.open("http://localhost:8081/login","_self");
+
+        // const response = await fetch('http://localhost:8081')
+        // const myJson = await response.json();
+        // console.log(JSON.stringify(myJson));
         login.googleAuth()
             .then(res => {
-                    console.log(res);
-                    this.setState({persons: res.data})
-                console.log(res)
+
+                this.setState({persons: res.data}, () => {
+                    console.log(this.state.persons);
+                });
                 }
-            )
+            ).catch(res => console.log(res.message));
+        console.log(this.state.persons)
     }
 
     render() {
@@ -59,10 +65,10 @@ class Header extends Component {
 
                         </div>
                         <ul class="item2">
-                            {this.state.persons.map(person => <li>{person.id}</li>)}
+                            {/*{this.state.persons.map(person => <li>{person}</li>)}*/}
                             <li className='btnh1'><NavLink to='#'>Учиться </NavLink></li>
                             <li className='btnh2'><NavLink to='#'> Стать автором </NavLink></li>
-                            <li className="login"><NavLink to='/heh' onClick={this.createEventHandler}>Войти </NavLink>
+                            <li className="login"><NavLink to='#' onClick={this.createEventHandler}>Войти </NavLink>
                             </li>
                         </ul>
 
@@ -70,7 +76,7 @@ class Header extends Component {
 
                     {this.state.creating && <Backdrop/>}
                     {this.state.creating &&
-                    <Login title="Войти" googleAuth={this.onGoogleAuth} canCancel canConfirm onExit1={this.onExit1}>
+                        <Login title="Войти" googleAuth={this.GoogleAuth} canCancel={this.googleXD} canConfirm onExit1={this.onExit1}>
 
                     </Login>}
                 </React.Fragment>
