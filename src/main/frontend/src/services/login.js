@@ -7,22 +7,20 @@ import axios from 'axios'
 class Login {
 
 
-
-
-
-     googleAuth() {
+    googleAuth() {
 
         return axios.get(`${'http://localhost:8081/'}`, {
             headers: {
                 'Content-Type': 'application/json',
                 'Cache-Control': 'no-cache',
                 'Access-Control-Allow-Origin': '*',
-                "X-Content-Type-Options": "nosniff"},
+                "X-Content-Type-Options": "nosniff"
+            },
             'Authorization': 'Bearer'
         });
 
-            }
+    }
 
-        }
+}
 
-        export default new Login;
+export default new Login;
