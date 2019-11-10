@@ -4,7 +4,6 @@ import edu.practise.universal_teacher.entities.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,17 +20,15 @@ public class MainController {
     public HashMap<String, Object> main(@AuthenticationPrincipal User user) {
         HashMap<String, Object> data = new HashMap<>();
         data.put("profile", user);
-
         return data;
     }
 
 
     @GetMapping("/home")
-    public ResponseEntity<Object> home(@AuthenticationPrincipal User user) {
-        Object auth = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+    public ResponseEntity<User> home(@AuthenticationPrincipal User user) {
 
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(auth);
+                .body(user);
     }
 }

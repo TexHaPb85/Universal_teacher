@@ -4,12 +4,8 @@ import logotype from "../../imgs/logotype.png"
 import Login from "./Login"
 import Backdrop from "./Backdrop";
 import {NavLink} from "react-router-dom";
+
 import login from "../../services/login"
-
-
-
-
-// import {Form,FormControl,FormLabel,Button} from "react-bootstrap"
 
 class Header extends Component {
     constructor(props) {
@@ -33,20 +29,35 @@ class Header extends Component {
 
     }
     googleXD = () =>{
-
+        let port = (window.location.port ? ':' + window.location.port : '');
+        if (port === ':3000') {
+            port = ':8081';
+        }
+        console.log(window.location.hostname);
+        window.location.href = '//' + window.location.hostname + port + '/login';
+        // login.googleAuth()
+        //     .then(res => {
+        //
+        //             this.setState({persons: res.data}, () => {
+        //                 console.log(this.state.persons);
+        //             });
+        //         }
+        //     ).catch(res => console.log(res.message));
+        // console.log(this.state.persons)
 
     };
     GoogleAuth =  () => {
-        // window.open("http://localhost:8081/login","_self");
-
-        // const response = await fetch('http://localhost:8081')
-        // const myJson = await response.json();
-        // console.log(JSON.stringify(myJson));
+       // const request = require('request');
+       //  request('http://localhost:8081/home', function (error, response, body) {
+       //      console.log('error:', error); // Print the error if one occurred
+       //      console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+       //      console.log('body:', body); // Print the HTML for the Google homepage.
+       //  });
         login.googleAuth()
             .then(res => {
 
                 this.setState({persons: res.data}, () => {
-                    console.log(this.state.persons);
+                    console.log(res);
                 });
                 }
             ).catch(res => console.log(res.message));

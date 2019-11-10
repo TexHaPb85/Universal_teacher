@@ -9,14 +9,17 @@ class Login {
 
     googleAuth() {
 
+
         return axios.get(`${'http://localhost:8081/'}`, {
             headers: {
                 'Content-Type': 'application/json',
-                'Cache-Control': 'no-cache',
-                'Access-Control-Allow-Origin': '*',
-                "X-Content-Type-Options": "nosniff"
-            },
-            'Authorization': 'Bearer'
+
+                // 'withCredentials' : 'true',
+                //     'credentials' : 'same-origin',
+
+
+            },withCredentials:true, credentials: "same-origin"
+
         });
 
     }
