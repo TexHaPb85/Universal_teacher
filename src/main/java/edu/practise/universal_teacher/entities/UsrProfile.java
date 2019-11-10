@@ -7,6 +7,7 @@ import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "profiles")
@@ -29,6 +30,9 @@ public class UsrProfile {
     @OneToOne(mappedBy = "profile")
     @JsonIgnore
     private User user;
+
+    @ManyToMany
+    private List<Course> courses;
 
     //@OneToMany(mappedBy = "profiles")S
     //private Set<Achievement> achievements;

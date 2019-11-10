@@ -57,7 +57,7 @@ public class ProfilesControllerTest {
 
     @Test
     public void deleteProfile() throws Exception {
-
+        
     }
 
 }

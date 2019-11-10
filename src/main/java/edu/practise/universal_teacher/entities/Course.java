@@ -13,6 +13,9 @@ public class Course {
     private String courseName;
     private double courseDifficulty;
 
+    @ManyToMany
+    private List<UsrProfile> profiles;
+
     @JsonIgnore
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "course")
     private List<Lesson> lessons;
