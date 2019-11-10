@@ -12,8 +12,8 @@ class Header extends Component {
         super(props);
         this.state = {
             creating: false,
-            persons: []
-
+            persons: {},
+            auth : false
 
         }
     }
@@ -29,12 +29,6 @@ class Header extends Component {
 
     }
     googleXD = () =>{
-        let port = (window.location.port ? ':' + window.location.port : '');
-        if (port === ':3000') {
-            port = ':8081';
-        }
-        console.log(window.location.hostname);
-        window.location.href = '//' + window.location.hostname + port + '/login';
         // login.googleAuth()
         //     .then(res => {
         //
@@ -47,6 +41,8 @@ class Header extends Component {
 
     };
     GoogleAuth =  () => {
+        // if(this.props.auth === false){
+        // console.log("kek");}
        // const request = require('request');
        //  request('http://localhost:8081/home', function (error, response, body) {
        //      console.log('error:', error); // Print the error if one occurred
@@ -57,12 +53,17 @@ class Header extends Component {
             .then(res => {
 
                 this.setState({persons: res.data}, () => {
-                    console.log(res);
+                   if(res.data.profile == null){
+                       this.setState({auth : false})
+                       console.log(this.auth.toString())
+                   }
+
+
                 });
                 }
             ).catch(res => console.log(res.message));
-        console.log(this.state.persons)
-    }
+
+    };
 
     render() {
         return (
