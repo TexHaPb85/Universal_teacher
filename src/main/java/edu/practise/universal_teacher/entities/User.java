@@ -39,8 +39,8 @@ public class User {
     }
 
     public User() {
-        this.id="cocu";
-        this.email="cocuxui@gmail.com";
+        this.id="some id";
+        this.email="emptyuser@gmail.com";
     }
 
     public String getId() {
