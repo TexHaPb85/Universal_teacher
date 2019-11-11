@@ -23,22 +23,17 @@ class MainPage extends Component{
 
     render() {
         return(
-            <BrowserRouter>
+
             <div>
-            <Header />
-            <Home/>
-                {/*<Switch>*/}
-                {/*    <Redirect  from="/" to="main" exact/>*/}
-                {/*    <Route  path="/main"  component={Home} />*/}
-                {/*    <Route  path="/heh"  component={HomePage} />*/}
-                {/*</Switch>*/}
+
+            <Home />
 
            <Content/>
             <Reviews/>
-            <Footer/>
+
 
             </div>
-            </BrowserRouter>
+
 
         )
     }
