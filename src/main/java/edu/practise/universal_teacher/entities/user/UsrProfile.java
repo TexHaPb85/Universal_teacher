@@ -1,13 +1,13 @@
-package edu.practise.universal_teacher.entities;
+package edu.practise.universal_teacher.entities.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonView;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
+import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "profiles")
@@ -31,8 +31,8 @@ public class UsrProfile {
     @JsonIgnore
     private User user;
 
-    @ManyToMany
-    private List<Course> courses;
+    @OneToMany(mappedBy = "usrProfile")
+    private Set<CourseProfileRelation> registrations;
 
     //@OneToMany(mappedBy = "profiles")S
     //private Set<Achievement> achievements;
@@ -61,7 +61,7 @@ public class UsrProfile {
         this.experience = experience;
         this.level = level;
         this.user = user;
-        this.lastVisitDate=lastVisitDate;
+        this.lastVisitDate = lastVisitDate;
         //this.achievements = achievements;
         this.locale = locale;
     }
@@ -72,7 +72,7 @@ public class UsrProfile {
         this.age = age;
         this.experience = experience;
         this.level = level;
-        this.lastVisitDate=LocalDateTime.now();
+        this.lastVisitDate = LocalDateTime.now();
     }
 
     public UsrProfile(UsrProfileDTO profileDTO) {

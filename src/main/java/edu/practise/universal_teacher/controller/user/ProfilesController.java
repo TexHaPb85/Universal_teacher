@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.controller.user;
 
-import edu.practise.universal_teacher.entities.UsrProfile;
+import edu.practise.universal_teacher.entities.user.UsrProfile;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 import edu.practise.universal_teacher.services.usr.UsrProfileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;

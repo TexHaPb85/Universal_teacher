@@ -1,9 +1,7 @@
-package edu.practise.universal_teacher.entities;
+package edu.practise.universal_teacher.entities.user;
 
 import javax.persistence.*;
-import javax.security.auth.Subject;
 import javax.validation.constraints.Email;
-import java.security.Principal;
 
 @Entity
 @Table(name = "app_users")
@@ -39,8 +37,8 @@ public class User {
     }
 
     public User() {
-        this.id="some id";
-        this.email="emptyuser@gmail.com";
+        this.id = "some id";
+        this.email = "emptyuser@gmail.com";
     }
 
     public String getId() {

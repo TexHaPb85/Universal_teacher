@@ -1,7 +1,7 @@
 package edu.practise.universal_teacher.services.course;
 
-import edu.practise.universal_teacher.entities.Course;
-import edu.practise.universal_teacher.entities.Lesson;
+import edu.practise.universal_teacher.entities.study.Course;
+import edu.practise.universal_teacher.entities.study.Lesson;
 
 import java.util.List;
 

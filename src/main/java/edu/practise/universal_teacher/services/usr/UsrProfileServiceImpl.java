@@ -1,7 +1,7 @@
 package edu.practise.universal_teacher.services.usr;
 
-import edu.practise.universal_teacher.entities.User;
-import edu.practise.universal_teacher.entities.UsrProfile;
+import edu.practise.universal_teacher.entities.user.User;
+import edu.practise.universal_teacher.entities.user.UsrProfile;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 import edu.practise.universal_teacher.exceptions.ProfileNotFoundException;
 import edu.practise.universal_teacher.reposetories.UserRepository;

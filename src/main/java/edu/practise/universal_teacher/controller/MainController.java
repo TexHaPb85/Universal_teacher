@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.controller;
 
-import edu.practise.universal_teacher.entities.User;
+import edu.practise.universal_teacher.entities.user.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

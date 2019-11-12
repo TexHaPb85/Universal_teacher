@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities;
+package edu.practise.universal_teacher.entities.study;
 
 import javax.persistence.*;
 
