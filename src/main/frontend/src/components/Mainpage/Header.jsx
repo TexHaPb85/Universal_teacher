@@ -7,10 +7,10 @@ import {Link} from "react-router-dom";
 import Async from "react-async"
 import login from "../../services/login"
 import {connect} from "react-redux";
-import store from "../../index"
-import {bindActionCreators} from 'redux';
-import {googleAuth} from "../../actions/personActions"
 
+import {bindActionCreators} from 'redux';
+import {googleAuth,onRefresh} from "../../actions/personActions"
+import store from "../../index"
 
 
 
@@ -39,7 +39,24 @@ class Header extends Component {
         this.setState({creating: false})
     };
 
-    // componentDidMount() {
+
+
+
+
+    componentDidMount() {
+
+        // this.props.onRefresh
+        // When state will be updated(in our case, when items will be fetched),
+            // we will update local component state and force component to rerender
+            // with new data.
+
+
+
+    }
+
+      // mapDispatchToProps();
+      //   mapStateToProps();
+        // console.log(this.props)
     //     login.googleAuth()
     //         .then(res => {
     //
@@ -63,7 +80,7 @@ class Header extends Component {
 
 
     googleXD = () => {
-        console.log(this.state.persons)
+        // console.log(this.state.persons)
 
     };
     // GoogleAuth = async () => {
@@ -73,6 +90,7 @@ class Header extends Component {
     // };
 
     render() {
+
         return (
 
             <header>
@@ -84,7 +102,7 @@ class Header extends Component {
 
                         </div>
                         <Async>
-                            {(!this.state.isLogged) ? <ul className="item2">
+                            {(!this.props.isLogged) ? <ul className="item2">
                                 {/*{this.state.persons.map(person => <li>{person}</li>)}*/}
                                 <li className='btnh1'><Link to='#'>Учиться </Link></li>
                                 <li className='btnh2'><Link to='#'> Стать автором </Link></li>
@@ -116,8 +134,11 @@ class Header extends Component {
 
 }
 const mapDispatchToProps = (dispatch) => {
+
   return {
+
       googleAuth : bindActionCreators(googleAuth,dispatch)
+
   }
 
 
@@ -129,7 +150,8 @@ const mapStateToProps = (state) => {
         persons: state.persons,
         isLogged : state.isLogged,
         auth : state.auth
-    }
+
+}
 };
 
 export default connect(mapStateToProps,mapDispatchToProps)(Header);

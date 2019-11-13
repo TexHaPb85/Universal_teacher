@@ -7,10 +7,15 @@ import {createStore,applyMiddleware} from "redux";
 import {Provider} from "react-redux"
 import reducer from './store/reducer'
 import thunk from "redux-thunk";
-const store = createStore(reducer,applyMiddleware(thunk));
+import {createLogger,logger} from "redux-logger"
 
+const store = createStore(reducer,applyMiddleware(thunk,createLogger()));
+// store.dispatch((dispatch) =>{
+//     dispatch({type:"loginData"})
+//
+// })
 store.subscribe( () =>{
- console.log()
+
 });
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));
@@ -19,3 +24,5 @@ ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementB
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister();
+
+export default store;
