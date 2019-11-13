@@ -3,12 +3,14 @@ package edu.practise.universal_teacher.entities.user;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
+import edu.practise.universal_teacher.entities.enums.Achievement;
 import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
 
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "profiles")
@@ -35,8 +37,11 @@ public class UsrProfile implements Serializable {
     @OneToMany(mappedBy = "usrProfile")//fetch = FetchType.EAGER
     private List<CourseProfileRelation> relations;
 
-    //@OneToMany(mappedBy = "profiles")
-    //private Set<Achievement> achievements;
+
+    @ElementCollection(targetClass = Achievement.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_achievements", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Achievement> achievements;
 
     public UsrProfile(String id, String login, String photoURL, Integer age, Long experience, Integer level, String locale, LocalDateTime lastVisitDate, User user) {
         this.id = id;
@@ -54,7 +59,7 @@ public class UsrProfile implements Serializable {
     }
 
     public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level,
-                      User user, /*Set<Achievement> achievements,*/ LocalDateTime lastVisitDate, String locale) {
+                      User user, Set<Achievement> achievements, LocalDateTime lastVisitDate, String locale) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
@@ -164,11 +169,11 @@ public class UsrProfile implements Serializable {
         this.relations = relations;
     }
 
-    /* public Set<Achievement> getAchievements() {
+    public Set<Achievement> getAchievements() {
         return achievements;
     }
 
     public void setAchievements(Set<Achievement> achievements) {
         this.achievements = achievements;
-    }*/
+    }
 }

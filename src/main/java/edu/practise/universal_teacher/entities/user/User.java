@@ -1,8 +1,11 @@
 package edu.practise.universal_teacher.entities.user;
 
+import edu.practise.universal_teacher.entities.enums.Role;
+
 import javax.persistence.*;
 import javax.validation.constraints.Email;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "app_users")
@@ -20,8 +23,10 @@ public class User implements Serializable {
     @JoinColumn(name = "profile_id", referencedColumnName = "prof_id")
     private UsrProfile profile;
 
-    //@OneToMany(mappedBy = "app_users")
-    //private Set<Role> roles;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
 
     public User(String id, @Email String email, String password, UsrProfile profile) {
@@ -38,7 +43,7 @@ public class User implements Serializable {
     }
 
     public User() {
-        this.id = "some id";
+        this.id = "id of empty user";
         this.email = "emptyuser@gmail.com";
     }
 
@@ -74,5 +79,11 @@ public class User implements Serializable {
         this.profile = profile;
     }
 
+    public Set<Role> getRoles() {
+        return roles;
+    }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }
