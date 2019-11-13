@@ -8,7 +8,7 @@ import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
-import java.util.Set;
+import java.util.List;
 
 @Entity
 @Table(name = "profiles")
@@ -31,8 +31,9 @@ public class UsrProfile implements Serializable {
     @JsonIgnore
     private User user;
 
-    @OneToMany(mappedBy = "usrProfile")
-    private Set<CourseProfileRelation> relations;
+    @JsonIgnore
+    @OneToMany(mappedBy = "usrProfile")//fetch = FetchType.EAGER
+    private List<CourseProfileRelation> relations;
 
     //@OneToMany(mappedBy = "profiles")
     //private Set<Achievement> achievements;
@@ -155,11 +156,11 @@ public class UsrProfile implements Serializable {
         this.locale = locale;
     }
 
-    public Set<CourseProfileRelation> getRelations() {
+    public List<CourseProfileRelation> getRelations() {
         return relations;
     }
 
-    public void setRelations(Set<CourseProfileRelation> relations) {
+    public void setRelations(List<CourseProfileRelation> relations) {
         this.relations = relations;
     }
 
@@ -170,19 +171,4 @@ public class UsrProfile implements Serializable {
     public void setAchievements(Set<Achievement> achievements) {
         this.achievements = achievements;
     }*/
-
-    @Override
-    public String toString() {
-        return "UsrProfile{" +
-                "id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                ", photoURL='" + photoURL + '\'' +
-                ", age=" + age +
-                ", experience=" + experience +
-                ", level=" + level +
-                ", locale='" + locale + '\'' +
-                ", lastVisitDate=" + lastVisitDate +
-                ", user=" + user +
-                '}';
-    }
 }

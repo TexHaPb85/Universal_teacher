@@ -74,14 +74,5 @@ public class User implements Serializable {
         this.profile = profile;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", profile=" + profile +
-                '}';
-    }
 
 }

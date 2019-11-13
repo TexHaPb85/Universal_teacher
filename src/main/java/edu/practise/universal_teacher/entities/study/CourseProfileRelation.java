@@ -1,12 +1,14 @@
 package edu.practise.universal_teacher.entities.study;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import edu.practise.universal_teacher.entities.user.UsrProfile;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Entity
-public class CourseProfileRelation {
+public class CourseProfileRelation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -23,6 +25,7 @@ public class CourseProfileRelation {
     @Column(name = "num_of_learned_lessons")
     private Integer learnedLessons;
 
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime registeredDate;
 
     public CourseProfileRelation(UsrProfile usrProfile, Course course, Integer learnedLessons, LocalDateTime registeredDate) {
