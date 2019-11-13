@@ -8,6 +8,7 @@ public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+
     private String theory;
 
     @ManyToOne(cascade = CascadeType.ALL)

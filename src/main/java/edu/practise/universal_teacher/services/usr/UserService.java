@@ -1,5 +1,6 @@
 package edu.practise.universal_teacher.services.usr;
 
+import edu.practise.universal_teacher.entities.study.Course;
 import edu.practise.universal_teacher.entities.user.User;
 
 import java.util.List;

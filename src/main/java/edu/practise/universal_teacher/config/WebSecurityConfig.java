@@ -25,19 +25,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.antMatcher("/**")
+        http
+                .antMatcher("/**")
                 .authorizeRequests()
-                .antMatchers("/", "/login**", "/js/**", "/error**","/**").permitAll()
+                .antMatchers("/", "/login**", "/js/**", "/error**").permitAll()
                 .anyRequest().authenticated()
-                .and().logout().logoutSuccessUrl("/").permitAll()
                 .and()
-
-                .csrf().disable()
-               ;
-                /*.authorizeRequests()
-                .mvcMatchers("/").permitAll()
-                .anyRequest().authenticated()
-                .and()*/
+                .logout().logoutSuccessUrl("/").permitAll()
+                .and()
+                .csrf().disable();
     }
 
 
@@ -54,6 +50,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     public PrincipalExtractor principalExtractor(UserRepository userRepository) {
         return map -> {
             String id = (String) map.get("sub");
+            System.out.println(map);
+            System.out.println("id:"+id);
+            System.out.println("user:"+userRepository.findById(id));
             User loggedInUser = userRepository.findById(id).orElseGet(() -> {
                 User newUser = new User();
                 UsrProfile newProfile = new UsrProfile();
@@ -67,11 +66,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 newProfile.setLocale((String) map.get("locale"));
 
                 newUser.setProfile(newProfile);
-                return newUser;
+                return userRepository.save(newUser);
             });
 
             loggedInUser.getProfile().setLastVisitDate(LocalDateTime.now());
-            return userRepository.save(loggedInUser);
+            return loggedInUser;
         };
     }
 }

@@ -2,10 +2,11 @@ package edu.practise.universal_teacher.entities.user;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.io.Serializable;
 
 @Entity
 @Table(name = "app_users")
-public class User {
+public class User implements Serializable {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) ід буде приходити з гугла, тому немає сенсу їх автогенерувати
     private String id;
