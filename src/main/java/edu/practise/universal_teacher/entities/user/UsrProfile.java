@@ -6,12 +6,13 @@ import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
 @Table(name = "profiles")
-public class UsrProfile {
+public class UsrProfile implements Serializable {
     @Id
     @Column(name = "prof_id")
     private String id;
@@ -23,7 +24,6 @@ public class UsrProfile {
     private Integer level;
     private String locale;
 
-
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
     private LocalDateTime lastVisitDate;
 
@@ -32,11 +32,10 @@ public class UsrProfile {
     private User user;
 
     @OneToMany(mappedBy = "usrProfile")
-    private Set<CourseProfileRelation> registrations;
+    private Set<CourseProfileRelation> relations;
 
-    //@OneToMany(mappedBy = "profiles")S
+    //@OneToMany(mappedBy = "profiles")
     //private Set<Achievement> achievements;
-
 
     public UsrProfile(String id, String login, String photoURL, Integer age, Long experience, Integer level, String locale, LocalDateTime lastVisitDate, User user) {
         this.id = id;
@@ -154,6 +153,14 @@ public class UsrProfile {
 
     public void setLocale(String locale) {
         this.locale = locale;
+    }
+
+    public Set<CourseProfileRelation> getRelations() {
+        return relations;
+    }
+
+    public void setRelations(Set<CourseProfileRelation> relations) {
+        this.relations = relations;
     }
 
     /* public Set<Achievement> getAchievements() {
