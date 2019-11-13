@@ -7,10 +7,12 @@ import axios from 'axios'
 class Login {
 
 
+
+
     googleAuth() {
 
 
-        return axios.get(`${'http://localhost:8081'}`, {
+            return axios.get(`${'http://localhost:8081'}`, {
             headers: {
                 'Content-Type': 'application/json',
 
@@ -20,7 +22,7 @@ class Login {
 
             },withCredentials:true, credentials: "same-origin"
 
-        });
+        })
 
     }
 

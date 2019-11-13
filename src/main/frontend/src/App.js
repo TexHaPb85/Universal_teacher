@@ -19,20 +19,31 @@ import {
     Redirect
 } from "react-router-dom";
 
-function App() {
+
+class App extends React.Component{
+
+render() {
 
 
-  return (
+    return (
+
       <Router>
+          <div></div>
           <Header persons=""/>
           <Switch>
+              <Redirect from="htpp://localhost:8081/" to={"main"}/>
               <Redirect from="/" to="main" exact/>
               <Route path="/main" component={Mainpage}/>
               <Route path="/home" component={Homepage}/>
           </Switch>
           <Footer/>
       </Router>
+
   );
+
+
+
+}
 }
 
-export default App;
+export default App ;
