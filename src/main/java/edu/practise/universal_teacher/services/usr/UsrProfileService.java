@@ -1,6 +1,9 @@
 package edu.practise.universal_teacher.services.usr;
 
-import edu.practise.universal_teacher.entities.UsrProfile;
+import edu.practise.universal_teacher.entities.study.Course;
+import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
+import edu.practise.universal_teacher.entities.user.User;
+import edu.practise.universal_teacher.entities.user.UsrProfile;
 import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
 
 import java.util.List;
@@ -16,5 +19,7 @@ public interface UsrProfileService {
 
     UsrProfile editProfileById(String profileId, UsrProfile profile);
 
+    List<Course> getCoursesByProfile(UsrProfile profile);
 
+    CourseProfileRelation addCourseToUser(User user, String courseId);
 }

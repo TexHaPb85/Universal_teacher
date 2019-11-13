@@ -1,13 +1,15 @@
-package edu.practise.universal_teacher.entities;
+package edu.practise.universal_teacher.entities.user;
+
+import edu.practise.universal_teacher.entities.enums.Role;
 
 import javax.persistence.*;
-import javax.security.auth.Subject;
 import javax.validation.constraints.Email;
-import java.security.Principal;
+import java.io.Serializable;
+import java.util.Set;
 
 @Entity
 @Table(name = "app_users")
-public class User {
+public class User implements Serializable {
     @Id
     //@GeneratedValue(strategy = GenerationType.AUTO) ід буде приходити з гугла, тому немає сенсу їх автогенерувати
     private String id;
@@ -21,8 +23,10 @@ public class User {
     @JoinColumn(name = "profile_id", referencedColumnName = "prof_id")
     private UsrProfile profile;
 
-    //@OneToMany(mappedBy = "app_users")
-    //private Set<Role> roles;
+    @ElementCollection(targetClass = Role.class, fetch = FetchType.EAGER)
+    @CollectionTable(name = "user_role", joinColumns = @JoinColumn(name = "user_id"))
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles;
 
 
     public User(String id, @Email String email, String password, UsrProfile profile) {
@@ -39,8 +43,8 @@ public class User {
     }
 
     public User() {
-        this.id="some id";
-        this.email="emptyuser@gmail.com";
+        this.id = "id of empty user";
+        this.email = "emptyuser@gmail.com";
     }
 
     public String getId() {
@@ -75,14 +79,11 @@ public class User {
         this.profile = profile;
     }
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "id='" + id + '\'' +
-                ", email='" + email + '\'' +
-                ", password='" + password + '\'' +
-                ", profile=" + profile +
-                '}';
+    public Set<Role> getRoles() {
+        return roles;
     }
 
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
 }

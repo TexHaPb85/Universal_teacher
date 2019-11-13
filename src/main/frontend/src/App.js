@@ -6,35 +6,44 @@ import Footer from "./components/Mainpage/Footer";
 import Reviews from "./components/Mainpage/Reviews";
 import Content from "./components/Mainpage/Content";
 import Mainpage from "./components/Mainpage/MainPage"
+
+import Homepage from "./components/Homepage/HomePage"
 import './App.css';
+
 
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+    Redirect
 } from "react-router-dom";
 
-function App() {
-  return (
-    <Router>
-      <div>
-        <Mainpage/>
-        {/*<Header />*/}
-        {/*<Home/>*/}
-        {/*<Content/>*/}
-        {/*<Reviews/>*/}
-        {/*<Footer/>*/}
-        {/*/!*<Switch>*!/*/}
-        {/*/!*  <Route  path="/heh" exact component={Footer} />*!/*/}
-        {/*/!*</Switch>*!/*/}
+
+class App extends React.Component{
+
+render() {
 
 
-      </div>
+    return (
 
+      <Router>
+          <div></div>
+          <Header persons=""/>
+          <Switch>
+              <Redirect from="htpp://localhost:8081/" to={"main"}/>
+              <Redirect from="/" to="main" exact/>
+              <Route path="/main" component={Mainpage}/>
+              <Route path="/home" component={Homepage}/>
+          </Switch>
+          <Footer/>
+      </Router>
 
-    </Router>
   );
+
+
+
+}
 }
 
-export default App;
+export default App ;

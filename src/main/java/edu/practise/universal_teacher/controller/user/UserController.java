@@ -1,7 +1,6 @@
 package edu.practise.universal_teacher.controller.user;
 
-import edu.practise.universal_teacher.entities.User;
-import edu.practise.universal_teacher.entities.UsrProfile;
+import edu.practise.universal_teacher.entities.user.User;
 import edu.practise.universal_teacher.services.usr.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -24,6 +23,13 @@ public class UserController {
         return ResponseEntity
                 .status(HttpStatus.OK)
                 .body(userService.getAllUsers());
+    }
+
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable String id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(userService.getUserById(id));
     }
 
     @PostMapping("/admin/users")

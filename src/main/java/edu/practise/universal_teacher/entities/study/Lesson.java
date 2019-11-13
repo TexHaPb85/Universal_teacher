@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities;
+package edu.practise.universal_teacher.entities.study;
 
 import javax.persistence.*;
 
@@ -8,6 +8,7 @@ public class Lesson {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
+
     private String theory;
 
     @ManyToOne(cascade = CascadeType.ALL)

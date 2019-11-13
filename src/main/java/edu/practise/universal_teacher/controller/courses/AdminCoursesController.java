@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.controller.courses;
 
-import edu.practise.universal_teacher.entities.Course;
+import edu.practise.universal_teacher.entities.study.Course;
 import edu.practise.universal_teacher.services.course.CourseServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
