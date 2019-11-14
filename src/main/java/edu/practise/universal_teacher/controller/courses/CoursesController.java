@@ -11,11 +11,12 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("/courses")
+@RequestMapping("S")
 public class CoursesController {
     private final CourseServiceImpl courseService;
     private final UsrProfileServiceImpl usrProfileService;
@@ -27,10 +28,13 @@ public class CoursesController {
     }
 
     @GetMapping
-    public ResponseEntity<List<Course>> getAllCourses() {
+    public ResponseEntity<HashMap<String,List<Course>>> getAllCourses(@AuthenticationPrincipal User user) {
+        HashMap<String,List<Course>> courses = new HashMap<>();
+        courses.put("my-courses",usrProfileService.getCoursesByProfile(user.getProfile()));
+        courses.put("all-courses",courseService.getAllCourses());
         return ResponseEntity
                 .status(HttpStatus.OK)
-                .body(courseService.getAllCourses());
+                .body(courses);
     }
 
     @PostMapping

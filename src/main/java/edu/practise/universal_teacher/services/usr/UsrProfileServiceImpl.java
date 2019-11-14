@@ -73,10 +73,7 @@ public class UsrProfileServiceImpl implements UsrProfileService {
     }
 
     @Override
-    public List<Course> getProfileCourses(String profileId) {
-        UsrProfile profile = usrProfileRepository
-                .findById(profileId)
-                .orElseThrow(()->new ProfileNotFoundException(profileId));
+    public List<Course> getCoursesByProfile(UsrProfile profile) {
         CourseProfileRelation relation = relationRepository
                 .getCourseProfileRelationByUsrProfile(profile);
         return courseRepository.getCoursesByRelations(relation);

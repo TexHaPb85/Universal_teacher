@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-
 import java.time.LocalDateTime;
 
 
@@ -21,7 +20,6 @@ import java.time.LocalDateTime;
 @EnableWebSecurity
 @EnableOAuth2Sso
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
@@ -36,23 +34,17 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable();
     }
 
-
-
-
     /**
      * during google authorization we are looking for user with the same Id im DB,
      * if we haven`t found it, we get info from google account add it to db
-     *
-     * @param userRepository
-     * @return
      */
     @Bean
     public PrincipalExtractor principalExtractor(UserRepository userRepository) {
         return map -> {
             String id = (String) map.get("sub");
             System.out.println(map);
-            System.out.println("id:"+id);
-            System.out.println("user:"+userRepository.findById(id));
+            System.out.println("id:" + id);
+            System.out.println("user:" + userRepository.findById(id));
             User loggedInUser = userRepository.findById(id).orElseGet(() -> {
                 User newUser = new User();
                 UsrProfile newProfile = new UsrProfile();

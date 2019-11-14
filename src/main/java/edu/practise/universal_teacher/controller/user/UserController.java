@@ -25,6 +25,13 @@ public class UserController {
                 .body(userService.getAllUsers());
     }
 
+    @GetMapping("/users/{id}")
+    public ResponseEntity<User> getUserById(@PathVariable String id){
+        return ResponseEntity
+                .status(HttpStatus.OK)
+                .body(userService.getUserById(id));
+    }
+
     @PostMapping("/admin/users")
     public ResponseEntity<User> addProfile(@RequestBody User usr) {
         return ResponseEntity

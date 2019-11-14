@@ -19,7 +19,7 @@ public interface UsrProfileService {
 
     UsrProfile editProfileById(String profileId, UsrProfile profile);
 
-    List<Course> getProfileCourses(String profileId);
+    List<Course> getCoursesByProfile(UsrProfile profile);
 
     CourseProfileRelation addCourseToUser(User user, String courseId);
 }
