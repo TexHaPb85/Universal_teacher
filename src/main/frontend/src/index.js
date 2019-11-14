@@ -8,14 +8,18 @@ import {Provider} from "react-redux"
 import reducer from './store/reducer'
 import thunk from "redux-thunk";
 import {createLogger,logger} from "redux-logger"
-
-const store = createStore(reducer,applyMiddleware(thunk,createLogger()));
+import {saveState,loadState} from "./localStorage";
+const persistedState = loadState();
+const store = createStore(reducer,persistedState,applyMiddleware(thunk,createLogger()));
 // store.dispatch((dispatch) =>{
-//     dispatch({type:"loginData"})
+//     dispatch({type:"loginData"})`
 //
 // })
 store.subscribe( () =>{
+    localStorage.setItem('reduxState', JSON.stringify(store.getState()))
+    // localStorage.getItem("reduxState");
 
+    // console.log(store.state)
 });
 
 ReactDOM.render(<Provider store={store}><App /></Provider>, document.getElementById('root'));

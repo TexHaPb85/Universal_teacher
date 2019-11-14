@@ -9,7 +9,7 @@ import login from "../../services/login"
 import {connect} from "react-redux";
 
 import {bindActionCreators} from 'redux';
-import {googleAuth,onRefresh} from "../../actions/personActions"
+import {googleAuth,ModalOpen} from "../../actions/personActions"
 import store from "../../index"
 
 
@@ -22,72 +22,28 @@ import store from "../../index"
 class Header extends Component {
 
 
-
-        state = {
-            // isLogged: false,
-            creating: false,
-            // persons: {},
-            // auth: false
-
-        }
-
-
-    createEventHandler = () => {
-        this.setState({creating: true})
-    };
-    onExit1 = () => {
-        this.setState({creating: false})
-    };
+        //
+        // state = {
+        //     // isLogged: false,
+        //     creating: false,
+        //     // persons: {},
+        //     // auth: false
+        //
+        // }
 
 
+    // createEventHandler = () => {
+    //     this.setState({creating: true})
+    // };
+    // onExit1 = () => {
+    //     this.setState({creating: false})
+    // };
 
 
 
-    componentDidMount() {
-
-        // this.props.onRefresh
-        // When state will be updated(in our case, when items will be fetched),
-            // we will update local component state and force component to rerender
-            // with new data.
-
-
-
+    componentWillUpdate(nextProps, nextState, nextContext) {
     }
 
-      // mapDispatchToProps();
-      //   mapStateToProps();
-        // console.log(this.props)
-    //     login.googleAuth()
-    //         .then(res => {
-    //
-    //                 this.setState({persons: res.data.profile}, () => {
-    //                     if (this.state.persons === null) {
-    //                         this.setState({auth: false, isLogged: false}, () => {
-    //                             console.log(this.state.auth)
-    //                             console.log(this.state.persons)
-    //                         })
-    //                     } else if (!this.state.persons !== undefined) {
-    //                         this.setState({auth: true, isLogged: true}, () => {
-    //                             console.log(this.state.persons);
-    //                             console.log(this.state.auth)
-    //                         });
-    //                     }
-    //
-    //                 });
-    //             }
-    //         ).catch(res => console.log(res.message));
-    // }
-
-
-    googleXD = () => {
-        // console.log(this.state.persons)
-
-    };
-    // GoogleAuth = async () => {
-    //     // window.open("http://localhost:8081/login", "_self");
-    //
-    //
-    // };
 
     render() {
 
@@ -101,25 +57,26 @@ class Header extends Component {
                         <div className='item1'>
 
                         </div>
-                        <Async>
+                        {/*<Async>*/}
                             {(!this.props.isLogged) ? <ul className="item2">
                                 {/*{this.state.persons.map(person => <li>{person}</li>)}*/}
                                 <li className='btnh1'><Link to='#'>Учиться </Link></li>
                                 <li className='btnh2'><Link to='#'> Стать автором </Link></li>
-                                <li className="login"><Link to='#' onClick={this.createEventHandler}>Войти </Link>
+                                <li className="login"><Link to='#' onClick={this.props.createEventHandler}>Войти </Link>
                                 </li>
                             </ul> : <ul className="loggedHeader">
                                 <li><Link to="/home">Профиль</Link></li>
                                 <li><Link to="#">Мои Курсы</Link></li>
                                 <li><Link to="#">Помощь</Link></li>
-                            </ul>}</Async>
+                            </ul>}
+                    {/*</Async>*/}
 
                     </div>
 
-                    {this.state.creating && <Backdrop/>}
-                    {this.state.creating &&
-                    <Login title="Войти" googleAuth={this.props.googleAuth} canCancel={this.googleXD} canConfirm
-                           onExit1={this.onExit1}>
+                    {this.props.creating && <Backdrop/>}
+                    {this.props.creating &&
+                    <Login title="Войти" googleAuth={this.props.googleAuth} canCancel={this.props.canCancel} canConfirm
+                           onExit1={this.props.onExit1}>
 
                     </Login>}
                 </React.Fragment>
@@ -137,16 +94,26 @@ const mapDispatchToProps = (dispatch) => {
 
   return {
 
-      googleAuth : bindActionCreators(googleAuth,dispatch)
+      googleAuth: bindActionCreators(googleAuth, dispatch),
+
+      // createEventHandler: bindActionCreators(ModalOpen,dispatch),
+      createEventHandler: () => {
+          dispatch({type: "CREATE_MOD"})
+      },
+
+
+      onExit1: () => {
+          dispatch({type: "EXITMOD"})
+      }
+
 
   }
-
-
 };
 const mapStateToProps = (state) => {
 
 
     return{
+        creating : state.creating,
         persons: state.persons,
         isLogged : state.isLogged,
         auth : state.auth

@@ -16,16 +16,15 @@ export const googleAuth = () => {
 
 
 };
-export const onRefresh = () => {
+export const ModalOpen = () => {
     return function (dispatch) {
+        // dispatch({type:"START_CREATE_MOD"});
+        setTimeout(()=>{
+            dispatch({type:"CREATE_MOD"})
+        },2000)
 
-        login.googleAuth().then((res) => dispatch({
-            type: "refresh",
-            payload: res.data.profile
-        })).catch((response) => dispatch({
-            type: "deadData",
-            error: response.error
-        }))
+
+
 
     }
 
