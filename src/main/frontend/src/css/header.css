@@ -50,7 +50,7 @@ li a{
     width: 320px;
     top: -27px;
     margin-left: 10vw;
-    z-index: 10000000;
+    z-index: 2;
 }
 
 .btnh1{

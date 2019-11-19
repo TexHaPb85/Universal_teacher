@@ -1,37 +1,81 @@
-import React, { Component } from 'react';
-import Header from "../Mainpage/Header"
-import "../../css/content.css"
-class HomePage extends  Component{
-constructor(props){
-    super(props);
-    this.state ={
-        data  : []
-    }
-}
+import React, {Component} from 'react';
+
+import "../../css/homePage.css"
+import {connect} from "react-redux";
 
 
-
-   componentDidMount() {
-
-   }
-    rofl(){
-        this.setState({data: Header.state.persons})
-    }
+class HomePage extends Component {
 
     render() {
 
-        return(
+        return (
             <React.Fragment>
-            {/*<Header data ={this.props.persons}/>*/}
+                <section className={"profile"}>
+                    <div className="profile-section">
+                        <div className={"profile-photo"}>
+                            <img className="profile-img" src={this.props.persons.profile.photoURL} alt="Profile photo"/>
+                            <span>Загрузить фото</span><button type="file">Обзор</button>
+                        </div>
+                        <div className={"profile-info"}>
+                            <p>{this.props.persons.profile.login}</p>
+                            <p>Статус</p>
+                            <p>Опыт</p>
+                            <p>Уровень </p>
+                        </div>
+                        <div className={"profile-menu"}>
+                            <ul >
+                                <li>Меню</li>
+                                <li>Меню</li>
+                                <li>Меню</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div className={"achiv-heading"}><h2>Ваши достижения</h2><div className={"all-achiv"}><a href="#"><span>смотреть все</span></a></div></div>
+                    <div  className={"achievments"}>
+                        <ul className={"achiv-img"}>
+                        <ul >
+                            <li><h3>Ачивка</h3></li>
+                            <li><img  src={this.props.persons.profile.photoURL} alt="1"/></li>
+                        </ul>
+                        <ul >
+                            <li><h3>Ачивка</h3></li>
+                            <li><img  src={this.props.persons.profile.photoURL} alt="1"/></li>
+                        </ul>
+                        <ul >
+                            <li><h3>Ачивка</h3></li>
+                            <li><img  src={this.props.persons.profile.photoURL} alt="1"/></li>
+                        </ul>
+                        <ul >
+                            <li><h3>Ачивка</h3></li>
+                            <li><img  src={this.props.persons.profile.photoURL} alt="1"/></li>
+                        </ul>
+                        <ul>
+                            <li><h3>Ачивка</h3></li>
+                            <li><img  src={this.props.persons.profile.photoURL} alt="1"/></li>
+                        </ul>
+                        </ul>
 
-            <section class="container-content">
-             <h1>{}</h1>
-            </section>
+                    </div>
+                </section>
             </React.Fragment>
         )
     }
 
 }
 
+const mapDispatchToProps = (dispatch) => {
 
-export default HomePage;
+    return {}
+
+};
+const mapStateToProps = (state) => {
+
+
+    return {
+        persons: state.persons,
+        auth: state.isLogged
+
+    }
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomePage);

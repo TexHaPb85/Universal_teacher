@@ -16,7 +16,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("S")
+@RequestMapping("/courses")
 public class CoursesController {
     private final CourseServiceImpl courseService;
     private final UsrProfileServiceImpl usrProfileService;

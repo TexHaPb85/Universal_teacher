@@ -4,7 +4,6 @@ import img from "../../imgs/login/exitIcon.png"
 import google from "../../imgs/login/googleAuth.png"
 
 
-
 const Login = props =>
     <div className="login_modal">
         <header className="login_header"><h1>{props.title}</h1>
@@ -20,7 +19,7 @@ const Login = props =>
                 <label>
                     <input className="login-checkbox" type="checkbox"/>Check me out
                 </label>
-                <button className="login-submit" >
+                <button className="login-submit">
                     Войти
                 </button>
                 <section className="login_action">
@@ -28,8 +27,8 @@ const Login = props =>
                     <div onClick={props.googleAuth} className="google-button"><img className="google-img" src={google}
                                                                                    alt="rofl1"/><span
                         className="google-text">Войти с помощью Google</span></div>}</div>
-                    {props.canCancel &&
-                    <button className="register-button" onClick={props.canCancel}>Зарегистрироваться</button>}
+                    {props.onRegister &&
+                    <button className="register-button" onClick={props.onRegister}>Зарегистрироваться</button>}
                     {/*{props.canConfirm && <button className="register-button">Войти</button>}*/}
                 </section>
             </form>

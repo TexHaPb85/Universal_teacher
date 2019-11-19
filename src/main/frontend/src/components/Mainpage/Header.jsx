@@ -3,47 +3,17 @@ import header from '../../css/header.css';
 import logotype from "../../imgs/logotype.png"
 import Login from "./Login"
 import Backdrop from "./Backdrop";
-import {Link} from "react-router-dom";
-import Async from "react-async"
-import login from "../../services/login"
+import {NavLink, Route} from "react-router-dom";
 import {connect} from "react-redux";
-
 import {bindActionCreators} from 'redux';
-import {googleAuth,ModalOpen} from "../../actions/personActions"
-import store from "../../index"
-
-
-
-
-
-
-
+import {googleAuth, loginData} from "../../actions/personActions"
 
 class Header extends Component {
 
 
-        //
-        // state = {
-        //     // isLogged: false,
-        //     creating: false,
-        //     // persons: {},
-        //     // auth: false
-        //
-        // }
-
-
-    // createEventHandler = () => {
-    //     this.setState({creating: true})
-    // };
-    // onExit1 = () => {
-    //     this.setState({creating: false})
-    // };
-
-
-
-    componentWillUpdate(nextProps, nextState, nextContext) {
+    componentWillMount() {
+        this.props.loginData(loginData());
     }
-
 
     render() {
 
@@ -57,25 +27,36 @@ class Header extends Component {
                         <div className='item1'>
 
                         </div>
+
                         {/*<Async>*/}
+                        <Route>
                             {(!this.props.isLogged) ? <ul className="item2">
                                 {/*{this.state.persons.map(person => <li>{person}</li>)}*/}
-                                <li className='btnh1'><Link to='#'>Учиться </Link></li>
-                                <li className='btnh2'><Link to='#'> Стать автором </Link></li>
-                                <li className="login"><Link to='#' onClick={this.props.createEventHandler}>Войти </Link>
+
+                                <li className='btnh1'><NavLink to='#'>Учитьyaся </NavLink></li>
+                                <li className='btnh2'><NavLink to='#'> Стать автором </NavLink></li>
+                                <li className="login"><NavLink to='#'
+                                                               onClick={this.props.createEventHandler}>Войти </NavLink>
                                 </li>
                             </ul> : <ul className="loggedHeader">
-                                <li><Link to="/home">Профиль</Link></li>
-                                <li><Link to="#">Мои Курсы</Link></li>
-                                <li><Link to="#">Помощь</Link></li>
+
+
+                                <li><NavLink replace={this.props.location.pathname === "/home"}
+                                             to="/home">Профиль</NavLink></li>
+                                <li><NavLink to="#">Курсы</NavLink></li>
+                                <li><NavLink to="#">Помощь</NavLink></li>
+                                <li><NavLink to="/" onClick={this.props.onLogout}>Выход</NavLink></li>
+
                             </ul>}
-                    {/*</Async>*/}
+                        </Route>
+                        {/*</Async>*/}
 
                     </div>
 
-                    {this.props.creating && <Backdrop/>}
+                    {this.props.creating && <Backdrop closeModal={this.props.closeModal}/>}
                     {this.props.creating &&
-                    <Login title="Войти" googleAuth={this.props.googleAuth} canCancel={this.props.canCancel} canConfirm
+                    <Login title="Войти" googleAuth={this.props.googleAuth} onRegister={this.props.onRegister}
+                           canConfirm
                            onExit1={this.props.onExit1}>
 
                     </Login>}
@@ -90,35 +71,44 @@ class Header extends Component {
     }
 
 }
+
 const mapDispatchToProps = (dispatch) => {
 
-  return {
+    return {
 
-      googleAuth: bindActionCreators(googleAuth, dispatch),
+        loginData: bindActionCreators(loginData, dispatch),
+        onLogout: () => dispatch({type: "ON_LOGOUT"}),
 
-      // createEventHandler: bindActionCreators(ModalOpen,dispatch),
-      createEventHandler: () => {
-          dispatch({type: "CREATE_MOD"})
-      },
+        onRegister: () => dispatch({type: "LOGIN_WINDOW"}),
+
+        googleAuth: bindActionCreators(googleAuth, dispatch),
+
+        // createEventHandler: bindActionCreators(ModalOpen,dispatch),
+        closeModal: () => {
+            dispatch({type: "EXIT_MOD"})
+        },
+
+        createEventHandler: () => {
+            dispatch({type: "CREATE_MOD"})
+        },
 
 
-      onExit1: () => {
-          dispatch({type: "EXITMOD"})
-      }
+        onExit1: () => {
+            dispatch({type: "EXIT_MOD"})
+        }
 
 
-  }
+    }
 };
 const mapStateToProps = (state) => {
 
 
-    return{
-        creating : state.creating,
+    return {
+        creating: state.creating,
         persons: state.persons,
-        isLogged : state.isLogged,
-        auth : state.auth
+        isLogged: state.isLogged,
 
-}
+    }
 };
 
-export default connect(mapStateToProps,mapDispatchToProps)(Header);
+export default connect(mapStateToProps, mapDispatchToProps)(Header);

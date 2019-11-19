@@ -1,0 +1,97 @@
+.profile{
+    /*height: 90vh;*/
+}
+.profile-section{
+    height: 45vh;
+    margin: 20px;
+    display:flex;
+
+}
+
+.profile-photo{
+    flex-grow: 2;
+}
+
+.profile-img{
+    display: block;
+    width: 200px;
+    border: 1px solid var(--maincolor);
+}
+
+.profile-info{
+    flex-grow: 8;
+}
+
+.profile-menu{
+    flex-grow: 2;
+}
+
+.profile-menu ul {
+    list-style-type: none;
+
+}
+
+.profile-menu li{
+    display: block;
+}
+
+/*.achiv-img li{*/
+/*    display: block;*/
+/*}*/
+.achievments img {
+
+    margin:10px 0;
+    width: 140px;
+    border-radius: 50%;
+}
+/*.achievments  {*/
+
+/*    display:block;*/
+/*}*/
+/*.achievments ul ul {*/
+
+/*    display: block  ;*/
+/*}*/
+.achiv-img {
+    height: 35vh;
+    background-color: #c5c5c5;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-top:1px solid var(--maincolor);
+}
+.achiv-img ul>li{
+    margin-top: 10px;
+    color: white;
+    display: flex ;
+    justify-content: space-around;
+}
+/*.achievments{*/
+/*    background-color: #c5c5c5;*/
+/*    display: flex;*/
+/*    justify-content: space-around;*/
+/*    border-top:1px solid var(--maincolor);*/
+/*}*/
+.achiv-heading h2{
+    height: 5vh;
+    text-align: center;
+    background-color: #c3deda;
+}
+
+.all-achiv{
+    text-align: right;
+    background-color: #c3deda;
+}
+
+
+.all-achiv span{
+    background-color: #c5c5c5;
+    padding: 0 10px;
+    border-top:1px solid var(--maincolor);
+    border-left:1px solid var(--maincolor);
+}
+.achievments{
+
+    /*background-color: #c5c5c5;*/
+    height: 35vh;
+}
