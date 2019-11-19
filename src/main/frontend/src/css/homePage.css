@@ -54,11 +54,11 @@
 /*}*/
 .achiv-img {
     height: 35vh;
-    background-color: #c5c5c5;
+    background-color: var(--maincolor);
     display: flex;
     align-items: center;
     justify-content: space-around;
-    border-top:1px solid var(--maincolor);
+    /*border-top:1px solid var(--maincolor);*/
 }
 .achiv-img ul>li{
     margin-top: 10px;
@@ -66,16 +66,13 @@
     display: flex ;
     justify-content: space-around;
 }
-/*.achievments{*/
-/*    background-color: #c5c5c5;*/
-/*    display: flex;*/
-/*    justify-content: space-around;*/
-/*    border-top:1px solid var(--maincolor);*/
-/*}*/
+
 .achiv-heading h2{
-    height: 5vh;
+    position: relative;
+   z-index: 2;
     text-align: center;
-    background-color: #c3deda;
+
+    margin-bottom: -3vh;
 }
 
 .all-achiv{
@@ -93,5 +90,49 @@
 .achievments{
 
     /*background-color: #c5c5c5;*/
-    height: 35vh;
+    height: 50vh;
+}
+.triangle-achiev{
+    width: 100%;
+    position: absolute;
+    height: 200px;
+    background: white;
+    cursor: pointer;
+    /* The points are: centered top, left bottom, right bottom */
+    clip-path: polygon(100% 0, 0  0, 50% 50%);
+
+
+}
+.triangle-achiev-after{
+
+    height: 200px;
+    background: var(--maincolor);
+    cursor: pointer;
+    /* The points are: centered top, left bottom, right bottom */
+        clip-path: polygon(100% 0, 0  0, 50% 50%);
+
+
+}
+
+
+.triangle-achiev-after:hover{
+
+    height: 200px;
+    background: rgb(2,0,36);
+    background: linear-gradient(180deg, rgba(85,141,118,1) 0%, rgba(85,141,118,1) 0%, rgba(197,197,197,1) 100%);
+    cursor: pointer;
+    /* The points are: centered top, left bottom, right bottom */
+    clip-path: polygon(100% 0, 0  0, 50% 50%);
+
+
+
+}
+
+
+.achiv-img ul:nth-child(even){
+    margin-top: 8vh;
+}
+
+.center-achieve{
+    margin-top: 15vh;
 }
