@@ -30,12 +30,14 @@
 
 
 
-ul li{
+ ul li{
     display:inline-block;
-    color: #c5c5c5;
-
 
 }
+ .container ul li{
+     color: #c5c5c5;
+
+ }
 li a{
     text-decoration: none;
     color: #000;

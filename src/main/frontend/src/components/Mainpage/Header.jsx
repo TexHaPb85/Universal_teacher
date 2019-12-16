@@ -12,7 +12,12 @@ import 'react-sticky-header/styles.css';
 class Header extends Component {
 
 
+
+
+
+
     componentWillMount() {
+
         this.props.loginData(loginData());
     }
 
@@ -23,14 +28,22 @@ class Header extends Component {
             <StickyHeader header={
 
                 <React.Fragment>
-                    <img src={logotype} alt="ekekke" className="Logo"/>
+                    {/*<NavLink to={"/"}>*/}
+                    <img src={logotype} alt="ekekke" className="Logo" useMap={"#Logo"} />
+                    <map name={"Logo"}>
+                        <NavLink replace={this.props.location.pathname === "/"} to={"/"} >
+                            <area shape={"rect"}  coords={"110,47,320,72"} />
+                            <area shape={"poly"}  coords={"20,0,0,50,50,103.5,100,50,45,0"} />
+                        </NavLink>
+                    </map>
+                    {/*</NavLink>*/}
                     <div class='container'>
                         <div className='item1'>
 
                         </div>
 
                         {/*<Async>*/}
-                        <Route>
+
                             {(!this.props.isLogged) ? <ul className="item2">
                                 {/*{this.state.persons.map(person => <li>{person}</li>)}*/}
 
@@ -44,12 +57,12 @@ class Header extends Component {
 
                                 <li><NavLink replace={this.props.location.pathname === "/home"}
                                              to="/home">Профиль</NavLink></li>
-                                <li><NavLink to="#">Курсы</NavLink></li>
+                                <li><NavLink  replace={this.props.location.pathname === "/courses"} to="/courses">Курсы</NavLink></li>
                                 <li><NavLink to="#">Помощь</NavLink></li>
                                 <li><NavLink to="/" onClick={this.props.onLogout}>Выход</NavLink></li>
 
                             </ul>}
-                        </Route>
+
                         {/*</Async>*/}
 
                     </div>

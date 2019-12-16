@@ -1,0 +1,26 @@
+.courses-menu {
+    display: flex;
+    max-width: 90vw;
+    margin: auto;
+    justify-content: space-evenly;
+
+}
+#h1{
+    text-align: center;
+}
+
+.courses-menu li{
+    display: block;
+
+}
+
+.courses-menu li a{
+    display: inline-block;
+    height: 5vh;
+    width: 16vw;
+    color: black;
+    background-color: #c5c5c5;
+    text-align: center;
+    padding-top: 10px;
+    margin: 10px 0;
+}
