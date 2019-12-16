@@ -5,6 +5,8 @@ import edu.practise.universal_teacher.exceptions.UserNotFoundException;
 import edu.practise.universal_teacher.reposetories.UserRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -46,5 +48,10 @@ public class UserServiceImpl implements UserService {
         User userFromDB = getUserById(userId);
         BeanUtils.copyProperties(user,userFromDB,"id");
         return repository.save(userFromDB);
+    }
+
+    @Override
+    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
+        return null;
     }
 }

@@ -23,7 +23,6 @@ public class UsrProfile implements Serializable {
     private String photoURL;
     private Integer age;
     private Long experience;
-    private Integer level;
     private String locale;
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy HH:mm:ss")
@@ -43,13 +42,12 @@ public class UsrProfile implements Serializable {
     @Enumerated(EnumType.STRING)
     private Set<Achievement> achievements;
 
-    public UsrProfile(String id, String login, String photoURL, Integer age, Long experience, Integer level, String locale, LocalDateTime lastVisitDate, User user) {
+    public UsrProfile(String id, String login, String photoURL, Integer age, Long experience, String locale, LocalDateTime lastVisitDate, User user) {
         this.id = id;
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
         this.experience = experience;
-        this.level = level;
         this.locale = locale;
         this.lastVisitDate = lastVisitDate;
         this.user = user;
@@ -58,25 +56,23 @@ public class UsrProfile implements Serializable {
     public UsrProfile() {
     }
 
-    public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level,
+    public UsrProfile(String login, String photoURL, Integer age, Long experience,
                       User user, Set<Achievement> achievements, LocalDateTime lastVisitDate, String locale) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
         this.experience = experience;
-        this.level = level;
         this.user = user;
         this.lastVisitDate = lastVisitDate;
-        //this.achievements = achievements;
+        this.achievements = achievements;
         this.locale = locale;
     }
 
-    public UsrProfile(String login, String photoURL, Integer age, Long experience, Integer level) {
+    public UsrProfile(String login, String photoURL, Integer age, Long experience) {
         this.login = login;
         this.photoURL = photoURL;
         this.age = age;
         this.experience = experience;
-        this.level = level;
         this.lastVisitDate = LocalDateTime.now();
     }
 
@@ -85,7 +81,6 @@ public class UsrProfile implements Serializable {
         this.photoURL = profileDTO.getPhotoURL();
         this.age = profileDTO.getAge();
         this.experience = profileDTO.getExperience();
-        this.level = profileDTO.getLevel();
         this.lastVisitDate = LocalDateTime.now();
     }
 
@@ -127,14 +122,6 @@ public class UsrProfile implements Serializable {
 
     public void setExperience(Long experience) {
         this.experience = experience;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
     }
 
     public User getUser() {

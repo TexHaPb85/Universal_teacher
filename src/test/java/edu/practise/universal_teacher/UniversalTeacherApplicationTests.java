@@ -27,7 +27,6 @@ public class UniversalTeacherApplicationTests {
 				"https://lh3.googleusercontent.com/-N9qRybxVM0s/AAAAAAAAAAI/AAAAAAAAAAA/ACHi3rd1LQcLxJna-oV9MNawpiXJfvwzQQ/photo.jpg",
 				0,
 				0L,
-				0,
 				"ru",
 				LocalDateTime.now(),
 				null);

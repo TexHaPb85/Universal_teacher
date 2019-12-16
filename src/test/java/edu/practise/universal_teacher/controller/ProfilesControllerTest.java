@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class ProfilesControllerTest {
 
     private RestTemplate restTemplate = new RestTemplate();
-    private UsrProfile testAddingProfile = new UsrProfile("tester", "test.png", 20, 0L, 0);
+    private UsrProfile testAddingProfile = new UsrProfile("tester", "test.png", 20, 0L);
 
     @Test
     public void addProfile() throws Exception {
