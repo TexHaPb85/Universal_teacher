@@ -1,6 +1,6 @@
 
 .container{
-  
+
     display: flex;
     height: 65px;
     flex-direction: row;
@@ -30,12 +30,14 @@
 
 
 
-ul li{
+ ul li{
     display:inline-block;
-    color: #c5c5c5;
-
 
 }
+ .container ul li{
+     color: #c5c5c5;
+
+ }
 li a{
     text-decoration: none;
     color: #000;
@@ -50,7 +52,7 @@ li a{
     width: 320px;
     top: -27px;
     margin-left: 10vw;
-    z-index: 10000000;
+    z-index: 2;
 }
 
 .btnh1{
@@ -119,6 +121,13 @@ margin-bottom: 1rem;
 /*}*/
 .loggedHeader li a{
     margin-left: 2vw;
-    color: #c5c5c5;
+    color: #ffffff;
 }
 
+/*header{*/
+/*    position: fixed;*/
+/*    z-index: 4;*/
+/*    width: 100%;*/
+/*    overflow: hidden;*/
+/*    top: 0;*/
+/*}*/

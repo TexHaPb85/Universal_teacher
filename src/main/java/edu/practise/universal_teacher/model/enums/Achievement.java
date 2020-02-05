@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities.enums;
+package edu.practise.universal_teacher.model.enums;
 
 public enum Achievement {
     ENGLISH_COURSE_FINISHED("URL", "Finish course of english"),

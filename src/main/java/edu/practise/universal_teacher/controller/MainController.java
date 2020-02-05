@@ -1,8 +1,6 @@
 package edu.practise.universal_teacher.controller;
 
-import edu.practise.universal_teacher.entities.user.User;
-import org.hibernate.Hibernate;
-import org.hibernate.Session;
+import edu.practise.universal_teacher.model.user.User;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;

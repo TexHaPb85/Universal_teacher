@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.services.question;
 
-import edu.practise.universal_teacher.entities.Question;
+import edu.practise.universal_teacher.model.Question;
 
 import java.util.List;
 

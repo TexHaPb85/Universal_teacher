@@ -1,10 +1,10 @@
-package edu.practise.universal_teacher.entities.user;
+package edu.practise.universal_teacher.model.user;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import edu.practise.universal_teacher.entities.dto.UsrProfileDTO;
-import edu.practise.universal_teacher.entities.enums.Achievement;
-import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
+import edu.practise.universal_teacher.model.dto.UsrProfileDTO;
+import edu.practise.universal_teacher.model.enums.Achievement;
+import edu.practise.universal_teacher.model.study.CourseProfileRelation;
 
 import javax.persistence.*;
 import java.io.Serializable;

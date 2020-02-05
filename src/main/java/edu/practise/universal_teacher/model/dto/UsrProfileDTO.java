@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities.dto;
+package edu.practise.universal_teacher.model.dto;
 
 public class UsrProfileDTO {
     private String login;

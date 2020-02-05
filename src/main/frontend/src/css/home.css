@@ -40,7 +40,7 @@
     text-align: center;
     display: inline-block;
     color: #c5c5c5;
-    background-color: rgba(66,0,94,0.6);
+    background-color:rgba(80, 134, 103, 0.8);
     padding: 5px 30px;
     border: none;
 
@@ -65,27 +65,3 @@
 }
 
 
-#pentagon {
-
-    transform: rotate(90deg);
-    top:10.5%;
-    left: -150px;
-    position: relative;
-    width: 500px;
-    border-width:400px 140px 0px 160px;
-    border-style: solid;
-    border-color: #c5c5c5 transparent;
-    opacity: 0.35;
-}
-#pentagon:before {
-
-    content: "";
-    position: absolute;
-    height: 0;
-    width: 0;
-    top: -600px;
-    left: -160px;
-    border-width: 0px 220px 200px 280px;
-    border-style: solid;
-    border-color: transparent transparent #c5c5c5;
-}

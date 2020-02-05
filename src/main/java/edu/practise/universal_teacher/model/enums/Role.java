@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities.enums;
+package edu.practise.universal_teacher.model.enums;
 
 public enum  Role {
     GUEST,

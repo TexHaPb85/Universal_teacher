@@ -1,7 +1,7 @@
 package edu.practise.universal_teacher;
 
-import edu.practise.universal_teacher.entities.user.User;
-import edu.practise.universal_teacher.entities.user.UsrProfile;
+import edu.practise.universal_teacher.model.user.User;
+import edu.practise.universal_teacher.model.user.UsrProfile;
 import edu.practise.universal_teacher.reposetories.UserRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;

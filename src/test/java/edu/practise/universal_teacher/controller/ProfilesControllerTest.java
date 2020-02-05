@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.controller;
 
-import edu.practise.universal_teacher.entities.user.UsrProfile;
+import edu.practise.universal_teacher.model.user.UsrProfile;
 import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.*;

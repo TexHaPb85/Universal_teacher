@@ -1,7 +1,7 @@
 package edu.practise.universal_teacher.services.course;
 
-import edu.practise.universal_teacher.entities.study.Course;
-import edu.practise.universal_teacher.entities.study.Lesson;
+import edu.practise.universal_teacher.model.study.Course;
+import edu.practise.universal_teacher.model.study.Lesson;
 import edu.practise.universal_teacher.exceptions.CourseNotFoundException;
 import edu.practise.universal_teacher.reposetories.CourseRepository;
 import edu.practise.universal_teacher.reposetories.LessonRepository;

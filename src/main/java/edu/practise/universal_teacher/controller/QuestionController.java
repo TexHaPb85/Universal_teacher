@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.controller;
 
-import edu.practise.universal_teacher.entities.Question;
+import edu.practise.universal_teacher.model.Question;
 import edu.practise.universal_teacher.services.question.QuestionServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

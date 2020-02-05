@@ -1,8 +1,8 @@
 package edu.practise.universal_teacher.controller.courses;
 
-import edu.practise.universal_teacher.entities.study.Course;
-import edu.practise.universal_teacher.entities.study.CourseProfileRelation;
-import edu.practise.universal_teacher.entities.user.User;
+import edu.practise.universal_teacher.model.study.Course;
+import edu.practise.universal_teacher.model.study.CourseProfileRelation;
+import edu.practise.universal_teacher.model.user.User;
 import edu.practise.universal_teacher.services.course.CourseServiceImpl;
 import edu.practise.universal_teacher.services.usr.UsrProfileServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,7 +16,7 @@ import java.util.List;
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
 @RestController
-@RequestMapping("S")
+@RequestMapping("/courses")
 public class CoursesController {
     private final CourseServiceImpl courseService;
     private final UsrProfileServiceImpl usrProfileService;

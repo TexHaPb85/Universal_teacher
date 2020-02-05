@@ -1,6 +1,6 @@
-package edu.practise.universal_teacher.entities.user;
+package edu.practise.universal_teacher.model.user;
 
-import edu.practise.universal_teacher.entities.enums.Role;
+import edu.practise.universal_teacher.model.enums.Role;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;

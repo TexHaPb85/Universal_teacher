@@ -1,7 +1,7 @@
 package edu.practise.universal_teacher.config;
 
-import edu.practise.universal_teacher.entities.user.User;
-import edu.practise.universal_teacher.entities.user.UsrProfile;
+import edu.practise.universal_teacher.model.user.User;
+import edu.practise.universal_teacher.model.user.UsrProfile;
 import edu.practise.universal_teacher.reposetories.UserRepository;
 import edu.practise.universal_teacher.services.usr.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,14 +13,9 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.AuthenticationEntryPoint;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import java.time.LocalDateTime;
 
 
@@ -49,6 +44,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .logout().logoutSuccessUrl("/").permitAll()
                 .and()
                     .csrf().disable();
+    }
+
+    @Bean
+    public AuthenticationSuccessHandler myAuthenticationSuccessHandler(){
+        return new GoogleUrlAuthenticationSuccessHandler();
     }
 
     @Autowired

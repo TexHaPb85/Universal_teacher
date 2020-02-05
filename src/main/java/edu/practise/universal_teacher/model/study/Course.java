@@ -1,4 +1,4 @@
-package edu.practise.universal_teacher.entities.study;
+package edu.practise.universal_teacher.model.study;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 

@@ -1,6 +1,6 @@
 package edu.practise.universal_teacher.reposetories;
 
-import edu.practise.universal_teacher.entities.study.Lesson;
+import edu.practise.universal_teacher.model.study.Lesson;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;

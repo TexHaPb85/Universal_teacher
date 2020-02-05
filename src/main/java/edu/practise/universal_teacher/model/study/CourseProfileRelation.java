@@ -1,7 +1,7 @@
-package edu.practise.universal_teacher.entities.study;
+package edu.practise.universal_teacher.model.study;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import edu.practise.universal_teacher.entities.user.UsrProfile;
+import edu.practise.universal_teacher.model.user.UsrProfile;
 
 import javax.persistence.*;
 import java.io.Serializable;
